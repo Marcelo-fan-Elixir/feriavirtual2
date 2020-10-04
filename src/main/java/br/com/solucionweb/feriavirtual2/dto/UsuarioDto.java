@@ -1,5 +1,8 @@
 package br.com.solucionweb.feriavirtual2.dto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import br.com.solucionweb.feriavirtual2.model.Usuario;
 
 public class UsuarioDto {
@@ -19,6 +22,10 @@ public class UsuarioDto {
 		direccionUsuario = usuario.getDireccionUsuario();
 		telefonoUsuario = usuario.getTelefonoUsuario();
 		emailUsuario = usuario.getEmailUsuario();
+	}
+	
+	public UsuarioDto() {
+		
 	}
 	
 	public String getRutUsuario() {
@@ -56,6 +63,10 @@ public class UsuarioDto {
 	}
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
+	}
+
+	public List<UsuarioDto> convertToList(List<Usuario> listUsuario) {
+		return listUsuario.stream().map(UsuarioDto::new).collect(Collectors.toList());
 	}
 	
 	

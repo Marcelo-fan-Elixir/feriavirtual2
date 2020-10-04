@@ -13,10 +13,10 @@ public interface UsuarioService {
 	
 	public Optional<Usuario> getUsuario(Long id);
 
-	public Optional<UsuarioDto> deleteUsuario();
+	public Optional<Usuario> deleteUsuario(Long id);
 	
-	public Optional<UsuarioDto> updateUsuario();
+	public Optional<Usuario> updateUsuario(Long id, UsuarioForm usuarioForm);
 	
-	public Optional<List<UsuarioDto>> listUsuario();
+	public List<Usuario> listUsuario();
 	
 }

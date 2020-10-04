@@ -41,8 +41,8 @@ public class Usuario {
 	@Column(name = "EMAIL_USUARIO")
 	private String emailUsuario;
 	
-	@OneToMany(mappedBy = "usuarios")
-	private List<Contrato> contratos;
+//	@OneToMany(mappedBy = "usuarios")
+//	private List<Contrato> contratos;
 	
 	
 	public Long getIdUsuario() {
