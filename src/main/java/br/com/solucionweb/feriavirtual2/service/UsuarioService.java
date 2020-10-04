@@ -3,7 +3,6 @@ package br.com.solucionweb.feriavirtual2.service;
 import java.util.List;
 import java.util.Optional;
 
-import br.com.solucionweb.feriavirtual2.dto.UsuarioDto;
 import br.com.solucionweb.feriavirtual2.form.UsuarioForm;
 import br.com.solucionweb.feriavirtual2.model.Usuario;
 

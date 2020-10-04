@@ -1,38 +1,30 @@
-package br.com.solucionweb.feriavirtual2.model;
+package br.com.solucionweb.feriavirtual2.dto;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import br.com.solucionweb.feriavirtual2.model.Contrato;
 
-@Entity
-@Table(name = "TB_CONTRATO")
-public class Contrato {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_CONTRATO")
-	private Long idContrato;
-	@Column(name = "DESCRIPCION_CONTRATO")
+public class ContratoDto {
+	
 	private String descripcionContrato;
-	@Column(name = "PDF_CONTRATO")
 	private String pdfContrato;
-	@Column(name = "FECHA_INICIO")
 	private Date fechaInicio;
-	@Column(name = "FECHA_TERMINO")
 	private Date fechaFin;
+
 	
+	public ContratoDto(Contrato contrato) {
+		descripcionContrato = contrato.getDescripcionContrato();
+		pdfContrato = contrato.getPdfContrato();
+		fechaInicio = contrato.getFechaInicio();
+		fechaFin = contrato.getFechaFin();
+	}
 	
-	public Long getIdContrato() {
-		return idContrato;
+	public ContratoDto() {
+		
 	}
-	public void setIdContrato(Long idContrato) {
-		this.idContrato = idContrato;
-	}
+	
 	public String getDescripcionContrato() {
 		return descripcionContrato;
 	}
@@ -58,5 +50,10 @@ public class Contrato {
 		this.fechaFin = fechaFin;
 	}
 
+	public List<ContratoDto> convertToList(List<Contrato> listContrato) {
+		return listContrato.stream().map(ContratoDto::new).collect(Collectors.toList());
+	}
 	
+	
+
 }

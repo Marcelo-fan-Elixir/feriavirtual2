@@ -1,38 +1,16 @@
-package br.com.solucionweb.feriavirtual2.model;
+package br.com.solucionweb.feriavirtual2.form;
 
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import br.com.solucionweb.feriavirtual2.model.Contrato;
 
-@Entity
-@Table(name = "TB_CONTRATO")
-public class Contrato {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_CONTRATO")
-	private Long idContrato;
-	@Column(name = "DESCRIPCION_CONTRATO")
+public class ContratoForm {
+	
 	private String descripcionContrato;
-	@Column(name = "PDF_CONTRATO")
 	private String pdfContrato;
-	@Column(name = "FECHA_INICIO")
 	private Date fechaInicio;
-	@Column(name = "FECHA_TERMINO")
 	private Date fechaFin;
 	
-	
-	public Long getIdContrato() {
-		return idContrato;
-	}
-	public void setIdContrato(Long idContrato) {
-		this.idContrato = idContrato;
-	}
 	public String getDescripcionContrato() {
 		return descripcionContrato;
 	}
@@ -57,6 +35,12 @@ public class Contrato {
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-
-	
+	public Contrato convert() {
+		Contrato contrato = new Contrato();
+		contrato.setDescripcionContrato(this.descripcionContrato);
+		contrato.setPdfContrato(this.pdfContrato);
+		contrato.setFechaInicio(this.fechaInicio);
+		contrato.setFechaFin(this.fechaFin);
+		return contrato;
+	}
 }
