@@ -1,11 +1,20 @@
 package br.com.solucionweb.feriavirtual2.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import br.com.solucionweb.feriavirtual2.enums.TipoUsuario;
 
 @Entity
 @Table(name = "TB_USUARIO")
@@ -34,10 +43,14 @@ public class Usuario {
 	@Column(name = "EMAIL_USUARIO")
 	private String emailUsuario;
 	
-//	@OneToMany(mappedBy = "usuarios")
-//	private List<Contrato> contratos;
+	@Column(name = "TIPO_USUARIO")
+	@Enumerated(EnumType.STRING)
+	private TipoUsuario tipoUsuario;
 	
-	
+	@Column(name = "CONTRATOS")
+	@OneToMany(mappedBy = "usuario",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Contrato> contratos;
+
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
@@ -80,7 +93,20 @@ public class Usuario {
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
 	}
-
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
 	
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+	
+	public List<Contrato> getContratos() {
+		return contratos;
+	}
+	
+	public void setContratos(List<Contrato> contratos) {
+		this.contratos = contratos;
+	}
 	
 }

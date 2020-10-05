@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.solucionweb.feriavirtual2.model.Contrato;
+import br.com.solucionweb.feriavirtual2.model.Usuario;
 
 public class ContratoDto {
 	
@@ -12,13 +13,16 @@ public class ContratoDto {
 	private String pdfContrato;
 	private Date fechaInicio;
 	private Date fechaFin;
+	private Usuario usuario;
 
 	
+
 	public ContratoDto(Contrato contrato) {
 		descripcionContrato = contrato.getDescripcionContrato();
 		pdfContrato = contrato.getPdfContrato();
 		fechaInicio = contrato.getFechaInicio();
 		fechaFin = contrato.getFechaFin();
+		usuario = contrato.getUsuario();
 	}
 	
 	public ContratoDto() {
@@ -54,6 +58,12 @@ public class ContratoDto {
 		return listContrato.stream().map(ContratoDto::new).collect(Collectors.toList());
 	}
 	
-	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 
 }

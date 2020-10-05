@@ -1,5 +1,9 @@
 package br.com.solucionweb.feriavirtual2.form;
 
+import java.util.List;
+
+import br.com.solucionweb.feriavirtual2.enums.TipoUsuario;
+import br.com.solucionweb.feriavirtual2.model.Contrato;
 import br.com.solucionweb.feriavirtual2.model.Usuario;
 
 public class UsuarioForm {
@@ -10,6 +14,8 @@ public class UsuarioForm {
 	private String direccionUsuario;
 	private String telefonoUsuario;
 	private String emailUsuario;
+	private TipoUsuario tipoUsuario;
+	private List<Contrato> contratos;
 	
 	
 	public String getRutUsuario() {
@@ -49,6 +55,20 @@ public class UsuarioForm {
 		this.emailUsuario = emailUsuario;
 	}
 	
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+	
+	public List<Contrato> getContratos() {
+		return contratos;
+	}
+	public void setContratos(List<Contrato> contratos) {
+		this.contratos = contratos;
+	}
+	
 	public Usuario convert() {
 		
 		Usuario usuario = new Usuario();
@@ -58,8 +78,10 @@ public class UsuarioForm {
 		usuario.setTelefonoUsuario(this.telefonoUsuario);
 		usuario.setEmailUsuario(this.emailUsuario);
 		usuario.setDireccionUsuario(direccionUsuario);
-		
+		usuario.setTipoUsuario(this.tipoUsuario);
+		usuario.setContratos(this.contratos);
 		return usuario;
 	}
-
+	
+	
 }

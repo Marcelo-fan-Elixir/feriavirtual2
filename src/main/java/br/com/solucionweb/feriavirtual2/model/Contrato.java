@@ -4,10 +4,14 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "TB_CONTRATO")
@@ -17,15 +21,22 @@ public class Contrato {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID_CONTRATO")
 	private Long idContrato;
+	
 	@Column(name = "DESCRIPCION_CONTRATO")
 	private String descripcionContrato;
+	
 	@Column(name = "PDF_CONTRATO")
 	private String pdfContrato;
+	
 	@Column(name = "FECHA_INICIO")
 	private Date fechaInicio;
+	
 	@Column(name = "FECHA_TERMINO")
 	private Date fechaFin;
 	
+	@JsonIgnore 
+	@ManyToOne(fetch = FetchType.EAGER)
+	private Usuario usuario;
 	
 	public Long getIdContrato() {
 		return idContrato;
@@ -58,5 +69,10 @@ public class Contrato {
 		this.fechaFin = fechaFin;
 	}
 
-	
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
 }
