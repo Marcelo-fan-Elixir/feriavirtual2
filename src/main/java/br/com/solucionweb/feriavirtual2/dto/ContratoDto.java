@@ -15,8 +15,6 @@ public class ContratoDto {
 	private Date fechaFin;
 	private Usuario usuario;
 
-	
-
 	public ContratoDto(Contrato contrato) {
 		descripcionContrato = contrato.getDescripcionContrato();
 		pdfContrato = contrato.getPdfContrato();
