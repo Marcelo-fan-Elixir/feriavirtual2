@@ -19,8 +19,7 @@ public class ProductoServiceImpl implements ProductoService{
 	
 	@Override
 	public Producto saveProducto(ProductoForm productoForm) {
-		productoRepository.save(productoForm.Convert());
-		return null;
+		return productoRepository.save(productoForm.Convert());
 	}
 
 	@Override
