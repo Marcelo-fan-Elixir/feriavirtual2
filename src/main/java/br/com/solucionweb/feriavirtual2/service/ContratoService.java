@@ -10,7 +10,7 @@ public interface ContratoService {
 	
 	public Contrato saveContrato(ContratoForm contratoForm);
 
-	Optional<Contrato> getContrato(Long id);
+	public Optional<Contrato> getContrato(Long id);
 
 	public Optional<Contrato> deleteContrato(Long id);
 	
