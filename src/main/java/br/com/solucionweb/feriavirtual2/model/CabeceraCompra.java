@@ -5,7 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
+
 @Table(name = "CABECERA_COMPRA")
 public class CabeceraCompra {
 	

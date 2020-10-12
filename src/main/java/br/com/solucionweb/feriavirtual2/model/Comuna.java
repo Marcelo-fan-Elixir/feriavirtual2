@@ -2,7 +2,7 @@ package br.com.solucionweb.feriavirtual2.model;
 
 import javax.persistence.Entity;
 
-@Entity
+
 public class Comuna {
 	
 	private Long idComuna;
