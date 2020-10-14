@@ -65,9 +65,6 @@ public class UsuarioServiceImpl implements UsuarioService{
 			usuarioUpdated.setEmailUsuario(usuarioForm.getEmailUsuario() != null? usuarioForm.getRutUsuario() :
 				(usuarioUpdated.getEmailUsuario() != null? usuarioUpdated.getEmailUsuario() : null));
 			
-			usuarioUpdated.setTipoUsuario(usuarioForm.getTipoUsuario() != null? usuarioForm.getTipoUsuario() :
-				(usuarioUpdated.getTipoUsuario() != null? usuarioUpdated.getTipoUsuario() : null));
-			
 			return usuario;
 		}
 		return usuario;

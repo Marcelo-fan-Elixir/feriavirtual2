@@ -4,7 +4,6 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 
-@Entity
 public class Empleado {
 	
 	private Long idEmpleado;

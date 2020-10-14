@@ -14,7 +14,6 @@ public class UsuarioForm {
 	private String direccionUsuario;
 	private String telefonoUsuario;
 	private String emailUsuario;
-	private TipoUsuario tipoUsuario;
 	private List<Contrato> contratos;
 	
 	
@@ -55,13 +54,6 @@ public class UsuarioForm {
 		this.emailUsuario = emailUsuario;
 	}
 	
-	public TipoUsuario getTipoUsuario() {
-		return tipoUsuario;
-	}
-	public void setTipoUsuario(TipoUsuario tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
-	}
-	
 	public List<Contrato> getContratos() {
 		return contratos;
 	}
@@ -78,7 +70,6 @@ public class UsuarioForm {
 		usuario.setTelefonoUsuario(this.telefonoUsuario);
 		usuario.setEmailUsuario(this.emailUsuario);
 		usuario.setDireccionUsuario(direccionUsuario);
-		usuario.setTipoUsuario(this.tipoUsuario);
 		usuario.setContratos(this.contratos);
 		return usuario;
 	}

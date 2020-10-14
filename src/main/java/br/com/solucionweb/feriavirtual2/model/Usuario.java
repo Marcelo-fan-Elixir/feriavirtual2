@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import br.com.solucionweb.feriavirtual2.enums.TipoUsuario;
 
 @Entity
-@Table(name = "TB_USUARIO")
+@Table(name = "USUARIO")
 public class Usuario {
 	
 	@Id
@@ -42,10 +42,6 @@ public class Usuario {
 	
 	@Column(name = "EMAIL_USUARIO")
 	private String emailUsuario;
-	
-	@Column(name = "TIPO_USUARIO")
-	@Enumerated(EnumType.STRING)
-	private TipoUsuario tipoUsuario;
 	
 	@Column(name = "CONTRATOS")
 	@OneToMany(mappedBy = "usuario",  cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -92,13 +88,6 @@ public class Usuario {
 	}
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
-	}
-	public TipoUsuario getTipoUsuario() {
-		return tipoUsuario;
-	}
-	
-	public void setTipoUsuario(TipoUsuario tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
 	}
 	
 	public List<Contrato> getContratos() {

@@ -15,7 +15,6 @@ public class UsuarioDto {
 	private String direccionUsuario;
 	private String telefonoUsuario;
 	private String emailUsuario;
-	private TipoUsuario tipoUsuario;
 	private List<Contrato> contratos;
 	
 	
@@ -26,7 +25,6 @@ public class UsuarioDto {
 		direccionUsuario = usuario.getDireccionUsuario();
 		telefonoUsuario = usuario.getTelefonoUsuario();
 		emailUsuario = usuario.getEmailUsuario();
-		tipoUsuario = usuario.getTipoUsuario();
 		contratos = usuario.getContratos();
 	}
 	
@@ -70,14 +68,6 @@ public class UsuarioDto {
 	}
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
-	}
-
-	public TipoUsuario getTipoUsuario() {
-		return tipoUsuario;
-	}
-
-	public void setTipoUsuario(TipoUsuario tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
 	}
 	
 	public List<UsuarioDto> convertToList(List<Usuario> listUsuario) {
