@@ -14,7 +14,7 @@ public class UsuarioForm {
 	private String direccionUsuario;
 	private String telefonoUsuario;
 	private String emailUsuario;
-	private List<Contrato> contratos;
+//	private List<Contrato> contratos;
 	
 	
 	public String getRutUsuario() {
@@ -54,12 +54,12 @@ public class UsuarioForm {
 		this.emailUsuario = emailUsuario;
 	}
 	
-	public List<Contrato> getContratos() {
-		return contratos;
-	}
-	public void setContratos(List<Contrato> contratos) {
-		this.contratos = contratos;
-	}
+//	public List<Contrato> getContratos() {
+//		return contratos;
+//	}
+//	public void setContratos(List<Contrato> contratos) {
+//		this.contratos = contratos;
+//	}
 	
 	public Usuario convert() {
 		
@@ -70,7 +70,7 @@ public class UsuarioForm {
 		usuario.setTelefonoUsuario(this.telefonoUsuario);
 		usuario.setEmailUsuario(this.emailUsuario);
 		usuario.setDireccionUsuario(direccionUsuario);
-		usuario.setContratos(this.contratos);
+//		usuario.setContratos(this.contratos);
 		return usuario;
 	}
 	

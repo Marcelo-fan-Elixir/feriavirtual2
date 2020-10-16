@@ -15,7 +15,7 @@ public class UsuarioDto {
 	private String direccionUsuario;
 	private String telefonoUsuario;
 	private String emailUsuario;
-	private List<Contrato> contratos;
+//	private List<Contrato> contratos;
 	
 	
 	public UsuarioDto(Usuario usuario) {
@@ -25,7 +25,7 @@ public class UsuarioDto {
 		direccionUsuario = usuario.getDireccionUsuario();
 		telefonoUsuario = usuario.getTelefonoUsuario();
 		emailUsuario = usuario.getEmailUsuario();
-		contratos = usuario.getContratos();
+//		contratos = usuario.getContratos();
 	}
 	
 
@@ -74,12 +74,12 @@ public class UsuarioDto {
 		return listUsuario.stream().map(UsuarioDto::new).collect(Collectors.toList());
 	}
 	
-	public List<Contrato> getContratos() {
-		return contratos;
-	}
-
-	public void setContratos(List<Contrato> contratos) {
-		this.contratos = contratos;
-	}
+//	public List<Contrato> getContratos() {
+//		return contratos;
+//	}
+//
+//	public void setContratos(List<Contrato> contratos) {
+//		this.contratos = contratos;
+//	}
 	
 }
