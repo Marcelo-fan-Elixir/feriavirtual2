@@ -3,8 +3,9 @@ package br.com.solucionweb.feriavirtual2.dto;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.solucionweb.feriavirtual2.enums.TipoUsuario;
+import br.com.solucionweb.feriavirtual2.model.Comuna;
 import br.com.solucionweb.feriavirtual2.model.Contrato;
+import br.com.solucionweb.feriavirtual2.model.TipoUsuario;
 import br.com.solucionweb.feriavirtual2.model.Usuario;
 
 public class UsuarioDto {
@@ -14,10 +15,10 @@ public class UsuarioDto {
 	private String nombreUsuario;
 	private String direccionUsuario;
 	private String telefonoUsuario;
-	private String emailUsuario;
-	private TipoUsuario tipoUsuario;
+	private String emailUsuario;	
 	private List<Contrato> contratos;
-	
+	private Comuna comuna;
+	private TipoUsuario tipoUsuario;
 	
 	public UsuarioDto(Usuario usuario) {
 		rutUsuario = usuario.getRutUsuario();
@@ -29,7 +30,6 @@ public class UsuarioDto {
 		tipoUsuario = usuario.getTipoUsuario();
 		contratos = usuario.getContratos();
 	}
-	
 
 	public UsuarioDto() {
 		
@@ -71,7 +71,7 @@ public class UsuarioDto {
 	public void setEmailUsuario(String emailUsuario) {
 		this.emailUsuario = emailUsuario;
 	}
-
+	
 	public TipoUsuario getTipoUsuario() {
 		return tipoUsuario;
 	}
@@ -90,6 +90,14 @@ public class UsuarioDto {
 
 	public void setContratos(List<Contrato> contratos) {
 		this.contratos = contratos;
+	}
+	
+	public Comuna getComuna() {
+		return comuna;
+	}
+
+	public void setComuna(Comuna comuna) {
+		this.comuna = comuna;
 	}
 	
 }
