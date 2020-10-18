@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * 
  */
 @Entity
-@Table(name = "USUARIO")
+@Table(name = "COMUNA")
 @NamedQuery(name="Comuna.findAll", query="SELECT c FROM Comuna c")
 public class Comuna implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -26,17 +26,20 @@ public class Comuna implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="ID_COMUNA")
-	private long idComuna;
+	private Long idComuna;
 
 	@Column(name="NOMBRE_COMUNA")
 	private String nombreComuna;
 
-	//bi-directional many-to-one association to Provincia
 	@ManyToOne
 	@JoinColumn(name="ID_PROVINCIA")
 	private Provincia provincia;
 
 	public Comuna() {
+	}
+	
+	public void setIdComuna(Long idComuna) {
+		this.idComuna = idComuna;
 	}
 
 	public long getIdComuna() {

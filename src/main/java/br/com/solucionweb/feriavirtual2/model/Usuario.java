@@ -14,6 +14,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "USUARIO")
 @NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
@@ -43,6 +45,7 @@ public class Usuario implements Serializable {
 	@Column(name="TELEFONO_USUARIO")
 	private String telefonoUsuario;
 
+	@JsonIgnore
 	@OneToMany(mappedBy="usuario")
 	private List<Contrato> contratos;
 
@@ -122,7 +125,7 @@ public class Usuario implements Serializable {
 	}
 
 	public Comuna getComuna() {
-		return this.comuna;
+		return comuna;
 	}
 
 	public void setComuna(Comuna comuna) {
@@ -130,11 +133,13 @@ public class Usuario implements Serializable {
 	}
 
 	public TipoUsuario getTipoUsuario() {
-		return this.tipoUsuario;
+		return tipoUsuario;
 	}
 
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-
+	
+	
+	
 }

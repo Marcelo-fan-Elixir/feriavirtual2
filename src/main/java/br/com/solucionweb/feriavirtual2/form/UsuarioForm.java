@@ -57,20 +57,6 @@ public class UsuarioForm {
 		this.emailUsuario = emailUsuario;
 	}
 	
-	public Comuna getComuna() {
-		return comuna;
-	}
-	public void setComuna(Comuna comuna) {
-		this.comuna = comuna;
-	}
-	
-	public TipoUsuario getTipoUsuario() {
-		return tipoUsuario;
-	}
-	public void setTipoUsuario(TipoUsuario tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
-	}
-	
 	public List<Contrato> getContratos() {
 		return contratos;
 	}
@@ -78,6 +64,18 @@ public class UsuarioForm {
 		this.contratos = contratos;
 	}
 	
+	public Comuna getComuna() {
+		return comuna;
+	}
+	public void setComuna(Comuna comuna) {
+		this.comuna = comuna;
+	}
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
 	public Usuario convert() {
 		
 		Usuario usuario = new Usuario();

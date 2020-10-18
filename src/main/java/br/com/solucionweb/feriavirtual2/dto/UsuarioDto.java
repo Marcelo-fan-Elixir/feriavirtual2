@@ -29,6 +29,7 @@ public class UsuarioDto {
 		emailUsuario = usuario.getEmailUsuario();
 		tipoUsuario = usuario.getTipoUsuario();
 		contratos = usuario.getContratos();
+		comuna = usuario.getComuna();
 	}
 
 	public UsuarioDto() {
@@ -72,14 +73,6 @@ public class UsuarioDto {
 		this.emailUsuario = emailUsuario;
 	}
 	
-	public TipoUsuario getTipoUsuario() {
-		return tipoUsuario;
-	}
-
-	public void setTipoUsuario(TipoUsuario tipoUsuario) {
-		this.tipoUsuario = tipoUsuario;
-	}
-	
 	public List<UsuarioDto> convertToList(List<Usuario> listUsuario) {
 		return listUsuario.stream().map(UsuarioDto::new).collect(Collectors.toList());
 	}
@@ -91,7 +84,7 @@ public class UsuarioDto {
 	public void setContratos(List<Contrato> contratos) {
 		this.contratos = contratos;
 	}
-	
+
 	public Comuna getComuna() {
 		return comuna;
 	}
@@ -99,5 +92,15 @@ public class UsuarioDto {
 	public void setComuna(Comuna comuna) {
 		this.comuna = comuna;
 	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+	
 	
 }
