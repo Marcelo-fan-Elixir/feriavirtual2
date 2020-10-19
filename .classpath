@@ -13,9 +13,9 @@
 	</classpathentry>
 	<classpathentry kind="src" output="target/test-classes" path="src/test/java">
 		<attributes>
+			<attribute name="test" value="true"/>
 			<attribute name="optional" value="true"/>
 			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="test" value="true"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
@@ -28,5 +28,10 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="src/main/resources/jars/ons.jar"/>
+	<classpathentry kind="lib" path="src/main/resources/jars/orai18n.jar"/>
+	<classpathentry kind="lib" path="src/main/resources/jars/simplefan.jar"/>
+	<classpathentry kind="lib" path="src/main/resources/jars/ucp.jar"/>
+	<classpathentry kind="lib" path="src/main/resources/jars/xdb6.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

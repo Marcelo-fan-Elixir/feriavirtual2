@@ -56,8 +56,23 @@ public class ContratoServiceImpl implements ContratoService{
 			contratoUpdated.setFechaInicio(contratoForm.getFechaInicio() != null? contratoForm.getFechaInicio() :
 				(contratoUpdated.getFechaInicio() != null? contratoUpdated.getFechaInicio() : null));
 			
-			contratoUpdated.setFechaFin(contratoForm.getFechaFin() != null? contratoForm.getFechaFin() :
-				(contratoUpdated.getFechaFin() != null? contratoUpdated.getFechaFin() : null));
+			contratoUpdated.setFechaTermino(contratoForm.getFechaTermino() != null? contratoForm.getFechaTermino() :
+				(contratoUpdated.getFechaTermino() != null? contratoUpdated.getFechaTermino() : null));
+			
+			contratoUpdated.setFechaModificacion(contratoForm.getFechaModificacion() != null? contratoForm.getFechaModificacion() :
+				(contratoUpdated.getFechaModificacion() != null? contratoUpdated.getFechaModificacion() : null));
+			
+			contratoUpdated.setFechaInicio2(contratoForm.getFechaInicio2() != null? contratoForm.getFechaInicio2() :
+				(contratoUpdated.getFechaInicio2() != null? contratoUpdated.getFechaInicio2() : null));
+			
+			contratoUpdated.setFechaTermino2(contratoForm.getFechaTermino2() != null? contratoForm.getFechaTermino2() :
+				(contratoUpdated.getFechaTermino2() != null? contratoUpdated.getFechaTermino2() : null));
+			
+			contratoUpdated.setTipoContrato(contratoForm.getTipoContrato() != null? contratoForm.getTipoContrato() :
+				(contratoUpdated.getTipoContrato() != null? contratoUpdated.getTipoContrato() : null));
+			
+			contratoUpdated.setUsuario(contratoForm.getUsuario() != null? contratoForm.getUsuario() :
+				(contratoUpdated.getUsuario() != null? contratoUpdated.getUsuario() : null));
 			
 			return contrato;
 		}
