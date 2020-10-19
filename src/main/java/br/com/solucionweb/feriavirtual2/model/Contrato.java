@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,13 +24,13 @@ import javax.persistence.TemporalType;
  */
 @Entity
 @Table(name = "CONTRATO")
-@NamedQuery(name="Contrato.findAll", query="SELECT c FROM Contrato c")
+//@NamedQuery(name="Contrato.findAll", query="SELECT c FROM Contrato c")
 public class Contrato implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID_CONTRATO")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CONT_SEQ")
+    @SequenceGenerator(sequenceName = "contrato_seq", allocationSize = 1, name = "CONT_SEQ")
 	private Long idContrato;
 
 	@Column(name="ID_TIPO_CONTRATO", insertable=false, updatable=false)
