@@ -38,7 +38,7 @@ public class ContratoController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<ContratoDto> getContratro(@PathVariable Long id){
+	public ResponseEntity<ContratoDto> getContrato(@PathVariable Long id){
 		Optional<Contrato> contrato = contratoService.getContrato(id);
 		if(contrato.isPresent()) {
 			return ResponseEntity.ok().body(new ContratoDto(contrato.get()));

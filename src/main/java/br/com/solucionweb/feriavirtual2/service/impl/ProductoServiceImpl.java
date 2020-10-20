@@ -24,26 +24,40 @@ public class ProductoServiceImpl implements ProductoService{
 
 	@Override
 	public Optional<Producto> getProducto(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return productoRepository.findById(id);
 	}
 
 	@Override
 	public Optional<Producto> deleteProducto(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Producto> producto = productoRepository.findById(id);
+		if (producto.isPresent()) {
+			productoRepository.deleteById(id);
+			return producto;
+		}
+		return producto;
 	}
 
 	@Override
 	public Optional<Producto> updateProducto(Long id, ProductoForm productoForm) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Producto> producto = productoRepository.findById(id);
+		if(producto.isPresent()) {
+			Producto productoUpdated = productoRepository.getOne(id);
+			productoUpdated.setNombreProducto(productoForm.getNombreProducto() != null? productoForm.getNombreProducto() :
+				(productoUpdated.getNombreProducto() != null? productoUpdated.getNombreProducto() : null));
+			
+			productoUpdated.setEstadoProducto(productoForm.getEstadoProducto() != null? productoForm.getEstadoProducto() :
+				(productoUpdated.getEstadoProducto() != null? productoUpdated.getEstadoProducto() : null));
+			
+			productoUpdated.setTipoProducto(productoForm.getTipoProducto() != null? productoForm.getTipoProducto() :
+				(productoUpdated.getTipoProducto() != null? productoUpdated.getTipoProducto() : null));			
+			return producto;
+		}
+		return producto;
 	}
 
 	@Override
 	public List<Producto> listProducto() {
-		// TODO Auto-generated method stub
-		return null;
+		return productoRepository.findAll();
 	}
 
 }
