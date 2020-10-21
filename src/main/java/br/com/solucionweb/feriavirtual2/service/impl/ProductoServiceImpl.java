@@ -3,6 +3,8 @@ package br.com.solucionweb.feriavirtual2.service.impl;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +20,7 @@ public class ProductoServiceImpl implements ProductoService{
 	private ProductoRepository productoRepository;
 	
 	@Override
+	@Transactional
 	public Producto saveProducto(ProductoForm productoForm) {
 		return productoRepository.save(productoForm.Convert());
 	}
@@ -28,6 +31,7 @@ public class ProductoServiceImpl implements ProductoService{
 	}
 
 	@Override
+	@Transactional
 	public Optional<Producto> deleteProducto(Long id) {
 		Optional<Producto> producto = productoRepository.findById(id);
 		if (producto.isPresent()) {
@@ -38,6 +42,7 @@ public class ProductoServiceImpl implements ProductoService{
 	}
 
 	@Override
+	@Transactional
 	public Optional<Producto> updateProducto(Long id, ProductoForm productoForm) {
 		Optional<Producto> producto = productoRepository.findById(id);
 		if(producto.isPresent()) {

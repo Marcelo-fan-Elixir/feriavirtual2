@@ -35,6 +35,7 @@ public class Contrato implements Serializable {
 
 	@Column(name="ID_TIPO_CONTRATO", insertable=false, updatable=false)
 	private Long idTipoContrato;
+	
 	@Column(name="DESCRIPCION_CONTRATO")
 	private String descripcionContrato;
 

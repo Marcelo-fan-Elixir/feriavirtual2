@@ -17,7 +17,7 @@ import br.com.solucionweb.feriavirtual2.service.ContratoService;
 public class ContratoServiceImpl implements ContratoService{
 
 	@Autowired
-	public ContratoRepository contratoRepository;
+	private ContratoRepository contratoRepository;
 
 	@Override
 	@Transactional
