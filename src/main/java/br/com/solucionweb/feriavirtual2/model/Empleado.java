@@ -56,7 +56,7 @@ public class Empleado implements Serializable {
 	@ManyToOne
 	@JoinColumn(name="ID_COMUNA")
 	private Comuna comuna;
-
+	
 	@ManyToOne
 	@JoinColumn(name="ID_SEXO")
 	private Sexo sexo;
