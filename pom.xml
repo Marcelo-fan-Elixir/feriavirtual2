@@ -49,7 +49,7 @@
 			<artifactId>HikariCP</artifactId>
 			<version>2.6.0</version>
 		</dependency>
-		
+
 		<!-- Oracle JDBC driver -->
 		<dependency>
 			<groupId>com.oracle.database.jdbc</groupId>
@@ -62,8 +62,13 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		
-		
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>5.4.9.Final</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>

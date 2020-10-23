@@ -1,18 +1,107 @@
 package br.com.solucionweb.feriavirtual2.model;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
+/**
+ * The persistent class for the TRANSPORTE database table.
+ * 
+ */
+@Entity
 @Table(name = "TRANSPORTE")
-public class Transporte {
+@NamedQuery(name="Transporte.findAll", query="SELECT t FROM Transporte t")
+public class Transporte implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="ID_TRANSPORTE")
+	private Long idTransporte;
+
+	@Column(name="DETALLE_TRANSPORTE")
+	private String detalleTransporte;
+
+	@Column(name="NUMERO_TRANSPORTE")
+	private String numeroTransporte;
+
+	//bi-directional many-to-one association to Subasta
+	@OneToMany(mappedBy="transporte")
+	private List<Subasta> subastas;
+
+	//bi-directional many-to-one association to EstadoTransporte
+	@ManyToOne
+	@JoinColumn(name="ID_ESTADO_TRANSPORTE")
+	private EstadoTransporte estadoTransporte;
+
+	//bi-directional many-to-one association to TipoTransporte
+	@ManyToOne
+	@JoinColumn(name="ID_TIPO_TRANSPORTE")
+	private TipoTransporte tipoTransporte;
+
+	public Transporte() {
+	}
 	
-	private Long idEstadoTransporte;
-	private String descripcionEstadoTransporte;
-	private Date fechaInicio;
-	private Date fechaEstimada;
-	private Date fechaTermino;
+	
+
+	public Long getIdTransporte() {
+		return idTransporte;
+	}
+
+
+
+	public void setIdTransporte(Long idTransporte) {
+		this.idTransporte = idTransporte;
+	}
+
+
+
+	public String getDetalleTransporte() {
+		return this.detalleTransporte;
+	}
+
+	public void setDetalleTransporte(String detalleTransporte) {
+		this.detalleTransporte = detalleTransporte;
+	}
+
+	public String getNumeroTransporte() {
+		return this.numeroTransporte;
+	}
+
+	public void setNumeroTransporte(String numeroTransporte) {
+		this.numeroTransporte = numeroTransporte;
+	}
+
+	public List<Subasta> getSubastas() {
+		return this.subastas;
+	}
+
+	public void setSubastas(List<Subasta> subastas) {
+		this.subastas = subastas;
+	}
+
+	public EstadoTransporte getEstadoTransporte() {
+		return this.estadoTransporte;
+	}
+
+	public void setEstadoTransporte(EstadoTransporte estadoTransporte) {
+		this.estadoTransporte = estadoTransporte;
+	}
+
+	public TipoTransporte getTipoTransporte() {
+		return this.tipoTransporte;
+	}
+
+	public void setTipoTransporte(TipoTransporte tipoTransporte) {
+		this.tipoTransporte = tipoTransporte;
+	}
 
 }

@@ -3,8 +3,10 @@ package br.com.solucionweb.feriavirtual2.controller;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +29,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping()
 	public ResponseEntity<UsuarioDto> saveUsuario(@RequestBody UsuarioForm usuarioForm, UriComponentsBuilder uriBuilder) {
 		Usuario usuario = usuarioService.saveUsuario(usuarioForm);
@@ -45,6 +48,7 @@ public class UsuarioController {
 		return ResponseEntity.notFound().build();
 	}
 	
+	@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping()
 	public ResponseEntity<List<UsuarioDto>> listUsuario(){
 		return ResponseEntity.ok(new UsuarioDto().convertToList(usuarioService.listUsuario()));
