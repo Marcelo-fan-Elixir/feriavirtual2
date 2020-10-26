@@ -29,7 +29,7 @@ public class UsuarioController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@PostMapping()
 	public ResponseEntity<UsuarioDto> saveUsuario(@RequestBody UsuarioForm usuarioForm, UriComponentsBuilder uriBuilder) {
 		Usuario usuario = usuarioService.saveUsuario(usuarioForm);
@@ -48,7 +48,7 @@ public class UsuarioController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	//@CrossOrigin(origins = "http://localhost:4200")
 	@GetMapping()
 	public ResponseEntity<List<UsuarioDto>> listUsuario(){
 		return ResponseEntity.ok(new UsuarioDto().convertToList(usuarioService.listUsuario()));

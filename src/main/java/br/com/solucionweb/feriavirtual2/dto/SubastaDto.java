@@ -18,6 +18,10 @@ public class SubastaDto {
 		estadoSubasta = subasta.getEstadoSubasta();
 	}
 	
+	public SubastaDto() {
+		
+	}
+	
 	public String getNomPujadorSubasta() {
 		return nomPujadorSubasta;
 	}
