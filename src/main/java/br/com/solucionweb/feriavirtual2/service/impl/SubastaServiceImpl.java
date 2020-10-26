@@ -50,6 +50,13 @@ public class SubastaServiceImpl  implements SubastaService{
 			subastaUpdated.setEstadoSubasta(subastaForm.getEstadoSubasta() != null? subastaForm.getEstadoSubasta() :
 				(subastaUpdated.getEstadoSubasta() != null? subastaUpdated.getEstadoSubasta() : null));
 			
+			subastaUpdated.setPedido(subastaForm.getPedido() != null? subastaForm.getPedido() :
+				(subastaUpdated.getPedido() != null? subastaUpdated.getPedido() : null));
+			
+			subastaUpdated.setTransporte(subastaForm.getTransporte() != null? subastaForm.getTransporte() :
+				(subastaUpdated.getTransporte() != null? subastaUpdated.getTransporte() : null));
+			
+			
 			return subasta;
 		}
 		return subasta;
