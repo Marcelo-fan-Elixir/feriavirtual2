@@ -1,0 +1,13 @@
+dddd
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch front-end-dev
+# Your branch is up to date with 'origin/front-end-dev'.
+#
+# Changes to be committed:
+#	modified:   src/main/java/br/com/solucionweb/feriavirtual2/dto/SubastaDto.java
+#	modified:   src/main/java/br/com/solucionweb/feriavirtual2/form/SubastaForm.java
+#	modified:   src/main/java/br/com/solucionweb/feriavirtual2/model/Subasta.java
+#	modified:   src/main/java/br/com/solucionweb/feriavirtual2/service/impl/SubastaServiceImpl.java
+#

@@ -4,12 +4,14 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.solucionweb.feriavirtual2.form.SubastaForm;
 import br.com.solucionweb.feriavirtual2.model.Subasta;
 import br.com.solucionweb.feriavirtual2.repository.SubastaRepository;
 import br.com.solucionweb.feriavirtual2.service.SubastaService;
 
+@Service
 public class SubastaServiceImpl  implements SubastaService{
 
 	@Autowired

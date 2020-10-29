@@ -37,7 +37,6 @@ public class ProductoController {
 		return ResponseEntity.created(uri).body(new ProductoDto(producto));//201
 	}
 	
-	
 	@GetMapping()
 	public ResponseEntity<List<ProductoDto>> listProducto(){
 		return ResponseEntity.ok(new ProductoDto().convertToList(productoService.listProducto()));
