@@ -19,44 +19,44 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "USUARIO")
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
-    @SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USER_SEQ")
-	@Column(name="ID_USUARIO")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
+	@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USER_SEQ")
+	@Column(name = "ID_USUARIO")
 	private Long idUsuario;
 
-	@Column(name="DIRECCION_USUARIO")
+	@Column(name = "DIRECCION_USUARIO")
 	private String direccionUsuario;
 
-	@Column(name="DV_USUARIO")
+	@Column(name = "DV_USUARIO")
 	private String dvUsuario;
 
-	@Column(name="EMAIL_USUARIO")
+	@Column(name = "EMAIL_USUARIO")
 	private String emailUsuario;
 
-	@Column(name="NOMBRE_USUARIO")
+	@Column(name = "NOMBRE_USUARIO")
 	private String nombreUsuario;
 
-	@Column(name="RUT_USUARIO")
+	@Column(name = "RUT_USUARIO")
 	private String rutUsuario;
 
-	@Column(name="TELEFONO_USUARIO")
+	@Column(name = "TELEFONO_USUARIO")
 	private String telefonoUsuario;
 
 	@JsonIgnore
-	@OneToMany(mappedBy="usuario")
+	@OneToMany(mappedBy = "usuario")
 	private List<Contrato> contratos;
 
 	@ManyToOne
-	@JoinColumn(name="ID_COMUNA")
+	@JoinColumn(name = "ID_COMUNA")
 	private Comuna comuna;
 
 	@ManyToOne
-	@JoinColumn(name="ID_TIPOUSUARIO")
+	@JoinColumn(name = "ID_TIPOUSUARIO")
 	private TipoUsuario tipoUsuario;
 
 	public Usuario() {
@@ -141,7 +141,5 @@ public class Usuario implements Serializable {
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
 		this.tipoUsuario = tipoUsuario;
 	}
-	
-	
-	
+
 }

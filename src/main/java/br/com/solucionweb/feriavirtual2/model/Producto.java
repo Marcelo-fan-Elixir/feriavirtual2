@@ -1,6 +1,7 @@
 package br.com.solucionweb.feriavirtual2.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
@@ -24,25 +27,27 @@ public class Producto implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROD_SEQ")
     @SequenceGenerator(sequenceName = "producto_seq", allocationSize = 1, name = "PROD_SEQ")
+	@Column(name="ID_PRODUCTO")
 	private Long idProducto;
 
 	@Column(name="NOMBRE_PRODUCTO")
 	private String nombreProducto;
-
-//	@ManyToMany
-//	@JoinTable(
-//		name="COMPRA_PRODUCTO"
-//		, joinColumns={
-//			@JoinColumn(name="ID_ESTADO_PRODUCTO", referencedColumnName="ID_ESTADO_PRODUCTO"),
-//			@JoinColumn(name="ID_PRODUCTO", referencedColumnName="ID_PRODUCTO")
-//			}
-//		, inverseJoinColumns={
-//			@JoinColumn(name="ID_CABECERA_COMPRA", referencedColumnName="ID_CABECERA_COMPRA"),
-//			@JoinColumn(name="ID_DETALLE_COMPRA", referencedColumnName="ID_DETALLE_COMPRA"),
-//			@JoinColumn(name="ID_USUARIO", referencedColumnName="ID_USUARIO")
-//			}
-//		)
-//	private List<DetalleCompra> detalleCompras;
+	
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(
+		name="COMPRA_PRODUCTO"
+		, joinColumns={
+			@JoinColumn(name="ID_ESTADO_PRODUCTO", referencedColumnName="ID_ESTADO_PRODUCTO"),
+			@JoinColumn(name="ID_PRODUCTO", referencedColumnName="ID_PRODUCTO")
+			}
+		, inverseJoinColumns={
+			@JoinColumn(name="ID_CABECERA_COMPRA", referencedColumnName="ID_CABECERA_COMPRA"),
+			@JoinColumn(name="ID_DETALLE_COMPRA", referencedColumnName="ID_DETALLE_COMPRA"),
+			@JoinColumn(name="ID_USUARIO", referencedColumnName="ID_USUARIO")
+			}
+		)
+	private List<DetalleCompra> detalleCompras;
 
 	@JsonIgnore
 	@ManyToOne
@@ -73,13 +78,13 @@ public class Producto implements Serializable {
 		this.nombreProducto = nombreProducto;
 	}
 
-//	public List<DetalleCompra> getDetalleCompras() {
-//		return this.detalleCompras;
-//	}
-//
-//	public void setDetalleCompras(List<DetalleCompra> detalleCompras) {
-//		this.detalleCompras = detalleCompras;
-//	}
+	public List<DetalleCompra> getDetalleCompras() {
+		return this.detalleCompras;
+	}
+
+	public void setDetalleCompras(List<DetalleCompra> detalleCompras) {
+		this.detalleCompras = detalleCompras;
+	}
 
 	public EstadoProducto getEstadoProducto() {
 		return this.estadoProducto;

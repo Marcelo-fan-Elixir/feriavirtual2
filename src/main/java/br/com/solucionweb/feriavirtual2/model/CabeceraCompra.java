@@ -40,8 +40,8 @@ public class CabeceraCompra implements Serializable {
 	@JoinColumn(name = "ID_USUARIO")
 	private Usuario usuario;
 
-	@OneToMany(mappedBy = "cabeceraCompra")
-	private List<DetalleCompra> detalleCompras;
+//	@OneToMany(mappedBy = "cabeceraCompra")
+//	private List<DetalleCompra> detalleCompras;
 
 	public CabeceraCompra() {
 	}
@@ -78,12 +78,12 @@ public class CabeceraCompra implements Serializable {
 		this.usuario = usuario;
 	}
 
-	public List<DetalleCompra> getDetalleCompras() {
-		return this.detalleCompras;
-	}
-
-	public void setDetalleCompras(List<DetalleCompra> detalleCompras) {
-		this.detalleCompras = detalleCompras;
-	}
+//	public List<DetalleCompra> getDetalleCompras() {
+//		return this.detalleCompras;
+//	}
+//
+//	public void setDetalleCompras(List<DetalleCompra> detalleCompras) {
+//		this.detalleCompras = detalleCompras;
+//	}
 
 }

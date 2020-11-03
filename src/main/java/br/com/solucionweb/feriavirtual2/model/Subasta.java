@@ -14,6 +14,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "SUBASTA")
 @NamedQuery(name="Subasta.findAll", query="SELECT s FROM Subasta s")
@@ -31,10 +33,12 @@ public class Subasta implements Serializable {
 	@Column(name="VALOR_SUBASTA")
 	private Long valorSubasta;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ID_ESTADO_SUBASTA")
 	private EstadoSubasta estadoSubasta;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name="ID_ESTADO_PEDIDO", referencedColumnName="ID_ESTADO_PEDIDO"),
@@ -42,6 +46,7 @@ public class Subasta implements Serializable {
 		})
 	private Pedido pedido;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name="ID_ESTADO_TRANSPORTE", referencedColumnName="ID_ESTADO_TRANSPORTE"),

@@ -20,9 +20,6 @@ public class TipoTransporte implements Serializable {
 	@Column(name="NOMBRE_TIPO_TRANSPORTE")
 	private String nombreTipoTransporte;
 
-	@OneToMany(mappedBy="tipoTransporte")
-	private List<Transporte> transportes;
-
 	public TipoTransporte() {
 	}
 
@@ -41,13 +38,4 @@ public class TipoTransporte implements Serializable {
 	public void setNombreTipoTransporte(String nombreTipoTransporte) {
 		this.nombreTipoTransporte = nombreTipoTransporte;
 	}
-
-	public List<Transporte> getTransportes() {
-		return this.transportes;
-	}
-
-	public void setTransportes(List<Transporte> transportes) {
-		this.transportes = transportes;
-	}
-
 }

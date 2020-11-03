@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "CABECERA_VENTA")
 @NamedQuery(name = "CabeceraVenta.findAll", query = "SELECT c FROM CabeceraVenta c")
@@ -30,17 +32,25 @@ public class CabeceraVenta implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name = "FECHA_VENTA")
 	private Date fechaVenta;
-
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumns({ @JoinColumn(name = "ID_ESTADO_PEDIDO", referencedColumnName = "ID_ESTADO_PEDIDO"),
 			@JoinColumn(name = "ID_PEDIDO", referencedColumnName = "ID_PEDIDO") })
 	private Pedido pedido;
 
+	@JsonIgnore
 	@ManyToOne
-	@JoinColumns({ @JoinColumn(name = "ID_TIPO_MONEDA", referencedColumnName = "ID_TIPO_MONEDA"),
-			@JoinColumn(name = "ID_TIPO_VENTA", referencedColumnName = "ID_TIPO_VENTA") })
+//	@JoinColumns({ @JoinColumn(name = "ID_TIPO_MONEDA", referencedColumnName = "ID_TIPO_MONEDA"),
+//			@JoinColumn(name = "ID_TIPO_VENTA", referencedColumnName = "ID_TIPO_VENTA") })
+	@JoinColumn(name = "ID_TIPO_VENTA", referencedColumnName = "ID_TIPO_VENTA")
 	private TipoVenta tipoVenta;
+	
+	@JsonIgnore
+	@Column(name="ID_TIPO_MONEDA")
+	private TipoMoneda tipoMoneda;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "ID_USUARIO")
 	private Usuario usuario;

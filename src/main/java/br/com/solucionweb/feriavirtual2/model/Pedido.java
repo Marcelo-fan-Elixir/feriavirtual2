@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -34,15 +36,18 @@ public class Pedido implements Serializable {
 	@Column(name="FECHA_PEDIDO")
 	private Date fechaPedido;
 
-	@OneToMany(mappedBy="pedido")
-	private List<CabeceraVenta> cabeceraVentas;
+//	@JsonIgnore
+//	@OneToMany(mappedBy="pedido")
+//	private List<CabeceraVenta> cabeceraVentas;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ID_ESTADO_PEDIDO")
 	private EstadoPedido estadoPedido;
 
-	@OneToMany(mappedBy="pedido")
-	private List<Subasta> subastas;
+//	@JsonIgnore
+//	@OneToMany(mappedBy="pedido")
+//	private List<Subasta> subastas;
 
 	public Pedido() {
 	}
@@ -71,13 +76,13 @@ public class Pedido implements Serializable {
 		this.fechaPedido = fechaPedido;
 	}
 
-	public List<CabeceraVenta> getCabeceraVentas() {
-		return this.cabeceraVentas;
-	}
-
-	public void setCabeceraVentas(List<CabeceraVenta> cabeceraVentas) {
-		this.cabeceraVentas = cabeceraVentas;
-	}
+//	public List<CabeceraVenta> getCabeceraVentas() {
+//		return this.cabeceraVentas;
+//	}
+//
+//	public void setCabeceraVentas(List<CabeceraVenta> cabeceraVentas) {
+//		this.cabeceraVentas = cabeceraVentas;
+//	}
 
 	public EstadoPedido getEstadoPedido() {
 		return this.estadoPedido;
@@ -87,12 +92,12 @@ public class Pedido implements Serializable {
 		this.estadoPedido = estadoPedido;
 	}
 
-	public List<Subasta> getSubastas() {
-		return this.subastas;
-	}
-
-	public void setSubastas(List<Subasta> subastas) {
-		this.subastas = subastas;
-	}
+//	public List<Subasta> getSubastas() {
+//		return this.subastas;
+//	}
+//
+//	public void setSubastas(List<Subasta> subastas) {
+//		this.subastas = subastas;
+//	}
 
 }

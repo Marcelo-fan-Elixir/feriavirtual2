@@ -2,6 +2,9 @@ package br.com.solucionweb.feriavirtual2.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -36,6 +39,7 @@ public class VentaDetalle implements Serializable {
 	private BigDecimal valorBrutoVentaDetalle;
 
 	//bi-directional many-to-one association to CabeceraVenta
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumns({
 		@JoinColumn(name="ID_CABECERA_VENTA", referencedColumnName="ID_CABECERA_VENTA"),
@@ -46,6 +50,7 @@ public class VentaDetalle implements Serializable {
 	private CabeceraVenta cabeceraVenta;
 
 	//bi-directional many-to-many association to Producto
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(
 		name="VENTA_PRODCUTO"

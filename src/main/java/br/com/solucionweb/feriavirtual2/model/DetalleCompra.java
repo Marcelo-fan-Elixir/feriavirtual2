@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * The persistent class for the DETALLE_COMPRA database table.
  * 
@@ -40,15 +42,21 @@ public class DetalleCompra implements Serializable {
 	@Column(name = "VALOR_BRUTO_DETALLE_VENTA")
 	private BigDecimal valorBrutoDetalleVenta;
 
-	// bi-directional many-to-many association to Producto
 	@ManyToMany(mappedBy = "detalleCompras")
 	private List<Producto> productos;
 
-	// bi-directional many-to-one association to CabeceraCompra
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumns({ @JoinColumn(name = "ID_CABECERA_COMPRA", referencedColumnName = "ID_CABECERA_COMPRA"),
 			@JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_USUARIO") })
+	@JoinColumn(name = "ID_CABECERA_COMPRA", referencedColumnName = "ID_CABECERA_COMPRA")
 	private CabeceraCompra cabeceraCompra;
+	
+	@JsonIgnore
+	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_USUARIO")
+	@Column(name="ID_USUARIO")
+	private Usuario usuario;
+	
 
 	public DetalleCompra() {
 	}
@@ -108,5 +116,15 @@ public class DetalleCompra implements Serializable {
 	public void setCabeceraCompra(CabeceraCompra cabeceraCompra) {
 		this.cabeceraCompra = cabeceraCompra;
 	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	
+	
 
 }

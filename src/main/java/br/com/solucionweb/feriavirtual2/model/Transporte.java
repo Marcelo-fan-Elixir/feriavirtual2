@@ -12,6 +12,8 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the TRANSPORTE database table.
@@ -33,16 +35,16 @@ public class Transporte implements Serializable {
 	@Column(name="NUMERO_TRANSPORTE")
 	private String numeroTransporte;
 
-	//bi-directional many-to-one association to Subasta
+	@JsonIgnore
 	@OneToMany(mappedBy="transporte")
 	private List<Subasta> subastas;
 
-	//bi-directional many-to-one association to EstadoTransporte
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ID_ESTADO_TRANSPORTE")
 	private EstadoTransporte estadoTransporte;
-
-	//bi-directional many-to-one association to TipoTransporte
+	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ID_TIPO_TRANSPORTE")
 	private TipoTransporte tipoTransporte;
