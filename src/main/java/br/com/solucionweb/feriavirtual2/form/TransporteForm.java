@@ -4,6 +4,7 @@ import java.util.Date;
 
 import br.com.solucionweb.feriavirtual2.model.EstadoTransporte;
 import br.com.solucionweb.feriavirtual2.model.TipoTransporte;
+import br.com.solucionweb.feriavirtual2.model.Transporte;
 
 public class TransporteForm {
 	
@@ -52,6 +53,15 @@ public class TransporteForm {
 		this.tipoTransporte = tipoTransporte;
 	}
 	
-	
+	public Transporte convert() {
+		Transporte transporte = new Transporte();
+		transporte.setDetalleTransporte(this.detalleTransporte);
+		transporte.setFechaInicio(this.fechaInicio);
+		transporte.setFechaTermino(this.fechaTermino);
+		transporte.setNumeroTransporte(this.numeroTransporte);
+		transporte.setEstadoTransporte(this.estadoTransporte);
+		transporte.setTipoTransporte(this.tipoTransporte);
+		return transporte;
+	}
 
 }
