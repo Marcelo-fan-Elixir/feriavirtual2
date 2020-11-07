@@ -19,7 +19,7 @@ public class EstadoProducto implements Serializable {
 	@Column(name="ID_ESTADO_PRODUCTO")
 	private Long idEstadoProducto;
 
-	@Column(name="DESCRTPCION_ESTADO_PRODUCTO")
+	@Column(name="DESCRIPCION_ESTADO_PRODUCTO")
 	private String descrtpcionEstadoProducto;
 
 	@Column(name="PORCENTAJE_ESTADO_PRODUCTO")

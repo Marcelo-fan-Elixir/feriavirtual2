@@ -54,7 +54,11 @@ public class ProductoServiceImpl implements ProductoService{
 				(productoUpdated.getEstadoProducto() != null? productoUpdated.getEstadoProducto() : null));
 			
 			productoUpdated.setTipoProducto(productoForm.getTipoProducto() != null? productoForm.getTipoProducto() :
-				(productoUpdated.getTipoProducto() != null? productoUpdated.getTipoProducto() : null));			
+				(productoUpdated.getTipoProducto() != null? productoUpdated.getTipoProducto() : null));
+			
+			productoUpdated.setValorProducto(productoForm.getValorProducto() != null? productoForm.getValorProducto() :
+				(productoUpdated.getValorProducto() != null? productoUpdated.getValorProducto() : null));
+			
 			return producto;
 		}
 		return producto;

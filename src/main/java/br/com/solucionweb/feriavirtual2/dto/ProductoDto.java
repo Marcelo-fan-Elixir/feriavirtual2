@@ -8,26 +8,37 @@ import br.com.solucionweb.feriavirtual2.model.Producto;
 import br.com.solucionweb.feriavirtual2.model.TipoProducto;
 
 public class ProductoDto {
-	
+
 	private String nombreProducto;
+	private Long valorProducto;
 	private EstadoProducto estadoProducto;
 	private TipoProducto tipoProducto;
-	
+
 	public ProductoDto(Producto producto) {
 		nombreProducto = producto.getNombreProducto();
 		estadoProducto = producto.getEstadoProducto();
 		tipoProducto = producto.getTipoProducto();
+		valorProducto = producto.getValorProducto();
 	}
-	
+
 	public ProductoDto() {
-		
+
 	}
-	
+
 	public String getNombreProducto() {
 		return nombreProducto;
 	}
+
 	public void setNombreProducto(String nombreProducto) {
 		this.nombreProducto = nombreProducto;
+	}
+
+	public Long getValorProducto() {
+		return valorProducto;
+	}
+
+	public void setValorProducto(Long valorProducto) {
+		this.valorProducto = valorProducto;
 	}
 
 	public EstadoProducto getEstadoProducto() {
@@ -49,5 +60,5 @@ public class ProductoDto {
 	public List<ProductoDto> convertToList(List<Producto> listProducto) {
 		return listProducto.stream().map(ProductoDto::new).collect(Collectors.toList());
 	}
-	
+
 }

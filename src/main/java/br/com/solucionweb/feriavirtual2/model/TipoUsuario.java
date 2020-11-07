@@ -19,7 +19,7 @@ public class TipoUsuario implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="ID_TIPOUSUARIO")
+	@Column(name="ID_TIPO_USUARIO")
 	private Long idTipousuario;
 
 	@Column(name="DESCRIPCION_TIPO_USUARIO")

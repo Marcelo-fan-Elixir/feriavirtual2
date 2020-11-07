@@ -1,7 +1,7 @@
 package br.com.solucionweb.feriavirtual2.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,18 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-
-/**
- * The persistent class for the TRANSPORTE database table.
- * 
- */
 @Entity
-@Table(name = "TRANSPORTE")
+@Table(name="TRANSPORTE")
 @NamedQuery(name="Transporte.findAll", query="SELECT t FROM Transporte t")
 public class Transporte implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -28,43 +23,39 @@ public class Transporte implements Serializable {
 	@Id
 	@Column(name="ID_TRANSPORTE")
 	private Long idTransporte;
-
+	
 	@Column(name="DETALLE_TRANSPORTE")
 	private String detalleTransporte;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="FECHA_INICIO")
+	private Date fechaInicio;
+
+	@Temporal(TemporalType.DATE)
+	@Column(name="FECHA_TERMINO")
+	private Date fechaTermino;
 
 	@Column(name="NUMERO_TRANSPORTE")
 	private String numeroTransporte;
 
-	@JsonIgnore
-	@OneToMany(mappedBy="transporte")
-	private List<Subasta> subastas;
-
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ID_ESTADO_TRANSPORTE")
 	private EstadoTransporte estadoTransporte;
-	
-	@JsonIgnore
+
 	@ManyToOne
 	@JoinColumn(name="ID_TIPO_TRANSPORTE")
 	private TipoTransporte tipoTransporte;
 
 	public Transporte() {
 	}
-	
-	
 
 	public Long getIdTransporte() {
-		return idTransporte;
+		return this.idTransporte;
 	}
-
-
 
 	public void setIdTransporte(Long idTransporte) {
 		this.idTransporte = idTransporte;
 	}
-
-
 
 	public String getDetalleTransporte() {
 		return this.detalleTransporte;
@@ -74,20 +65,28 @@ public class Transporte implements Serializable {
 		this.detalleTransporte = detalleTransporte;
 	}
 
+	public Date getFechaInicio() {
+		return this.fechaInicio;
+	}
+
+	public void setFechaInicio(Date fechaInicio) {
+		this.fechaInicio = fechaInicio;
+	}
+
+	public Date getFechaTermino() {
+		return this.fechaTermino;
+	}
+
+	public void setFechaTermino(Date fechaTermino) {
+		this.fechaTermino = fechaTermino;
+	}
+
 	public String getNumeroTransporte() {
 		return this.numeroTransporte;
 	}
 
 	public void setNumeroTransporte(String numeroTransporte) {
 		this.numeroTransporte = numeroTransporte;
-	}
-
-	public List<Subasta> getSubastas() {
-		return this.subastas;
-	}
-
-	public void setSubastas(List<Subasta> subastas) {
-		this.subastas = subastas;
 	}
 
 	public EstadoTransporte getEstadoTransporte() {

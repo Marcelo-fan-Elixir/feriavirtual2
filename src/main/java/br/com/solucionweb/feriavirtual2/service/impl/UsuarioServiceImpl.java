@@ -71,6 +71,9 @@ public class UsuarioServiceImpl implements UsuarioService{
 			usuarioUpdated.setComuna(usuarioForm.getComuna() != null? usuarioForm.getComuna() :
 				(usuarioUpdated.getComuna() != null? usuarioUpdated.getComuna() : null));
 			
+			usuarioUpdated.setPasswordUsuario(usuarioForm.getPasswordUsuario() != null? usuarioForm.getPasswordUsuario() :
+				(usuarioUpdated.getPasswordUsuario() != null? usuarioUpdated.getPasswordUsuario() : null));
+			
 			return usuario;
 		}
 		return usuario;

@@ -2,17 +2,11 @@ package br.com.solucionweb.feriavirtual2.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.math.BigDecimal;
 import java.util.List;
 
 
-/**
- * The persistent class for the VENTA_DETALLE database table.
- * 
- */
+
 @Entity
 @Table(name="VENTA_DETALLE")
 @NamedQuery(name="VentaDetalle.findAll", query="SELECT v FROM VentaDetalle v")
@@ -38,28 +32,18 @@ public class VentaDetalle implements Serializable {
 	@Column(name="VALOR_BRUTO_VENTA_DETALLE")
 	private BigDecimal valorBrutoVentaDetalle;
 
-	//bi-directional many-to-one association to CabeceraVenta
-	@JsonIgnore
 	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="ID_CABECERA_VENTA", referencedColumnName="ID_CABECERA_VENTA"),
-		@JoinColumn(name="ID_TIPO_MONEDA", referencedColumnName="ID_TIPO_MONEDA"),
-		@JoinColumn(name="ID_TIPO_VENTA", referencedColumnName="ID_TIPO_VENTA"),
-		@JoinColumn(name="ID_USUARIO", referencedColumnName="ID_USUARIO")
-		})
+	@JoinColumn(name="ID_CABECERA_VENTA")
 	private CabeceraVenta cabeceraVenta;
 
-	//bi-directional many-to-many association to Producto
-	@JsonIgnore
 	@ManyToMany
 	@JoinTable(
-		name="VENTA_PRODCUTO"
+		name="VENTA_PRODUCTO"
 		, joinColumns={
 			@JoinColumn(name="ID_VENTA_DETALLE")
 			}
 		, inverseJoinColumns={
-			@JoinColumn(name="ID_ESTADO_PRODUCTO", referencedColumnName="ID_ESTADO_PRODUCTO"),
-			@JoinColumn(name="ID_PRODUCTO", referencedColumnName="ID_PRODUCTO")
+			@JoinColumn(name="ID_PRODUCTO")
 			}
 		)
 	private List<Producto> productos;

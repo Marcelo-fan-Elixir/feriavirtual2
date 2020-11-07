@@ -1,72 +1,50 @@
 package br.com.solucionweb.feriavirtual2.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "PRODUCTO")
-@NamedQuery(name="Producto.findAll", query="SELECT p FROM Producto p")
+@NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")
 public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "PROD_SEQ")
-    @SequenceGenerator(sequenceName = "producto_seq", allocationSize = 1, name = "PROD_SEQ")
-	@Column(name="ID_PRODUCTO")
-	private Long idProducto;
+	@SequenceGenerator(sequenceName = "producto_seq", allocationSize = 1, name = "PROD_SEQ")
+	@Column(name = "ID_PRODUCTO")
+	private long idProducto;
 
-	@Column(name="NOMBRE_PRODUCTO")
+	@Column(name = "NOMBRE_PRODUCTO")
 	private String nombreProducto;
-	
-	@JsonIgnore
+
+	@Column(name = "VALOR_PRODUCTO")
+	private Long valorProducto;
+
 	@ManyToMany
-	@JoinTable(
-		name="COMPRA_PRODUCTO"
-		, joinColumns={
-			@JoinColumn(name="ID_ESTADO_PRODUCTO", referencedColumnName="ID_ESTADO_PRODUCTO"),
-			@JoinColumn(name="ID_PRODUCTO", referencedColumnName="ID_PRODUCTO")
-			}
-		, inverseJoinColumns={
-			@JoinColumn(name="ID_CABECERA_COMPRA", referencedColumnName="ID_CABECERA_COMPRA"),
-			@JoinColumn(name="ID_DETALLE_COMPRA", referencedColumnName="ID_DETALLE_COMPRA"),
-			@JoinColumn(name="ID_USUARIO", referencedColumnName="ID_USUARIO")
-			}
-		)
+	@JoinTable(name = "COMPRA_PRODUCTO", 
+	joinColumns = { @JoinColumn(name = "ID_PRODUCTO") }, 
+	inverseJoinColumns = {@JoinColumn(name = "ID_DETALLE_COMPRA") })
 	private List<DetalleCompra> detalleCompras;
 
-	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="ID_ESTADO_PRODUCTO")
+	@JoinColumn(name = "ID_ESTADO_PRODUCTO")
 	private EstadoProducto estadoProducto;
 
-	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name="ID_TIPO_PRODUCTO")
+	@JoinColumn(name = "ID_TIPO_PRODUCTO")
 	private TipoProducto tipoProducto;
 
 	public Producto() {
 	}
-	
-	public Long getIdProducto() {
-		return idProducto;
+
+	public long getIdProducto() {
+		return this.idProducto;
 	}
 
-	public void setIdProducto(Long idProducto) {
+	public void setIdProducto(long idProducto) {
 		this.idProducto = idProducto;
 	}
 
@@ -76,6 +54,14 @@ public class Producto implements Serializable {
 
 	public void setNombreProducto(String nombreProducto) {
 		this.nombreProducto = nombreProducto;
+	}
+
+	public Long getValorProducto() {
+		return this.valorProducto;
+	}
+
+	public void setValorProducto(Long valorProducto) {
+		this.valorProducto = valorProducto;
 	}
 
 	public List<DetalleCompra> getDetalleCompras() {

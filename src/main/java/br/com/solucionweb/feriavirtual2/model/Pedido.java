@@ -2,7 +2,6 @@ package br.com.solucionweb.feriavirtual2.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,17 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-
 
 @Entity
-@Table(name = "PEDIDO")
+@Table(name="PEDIDO")
 @NamedQuery(name="Pedido.findAll", query="SELECT p FROM Pedido p")
 public class Pedido implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +23,7 @@ public class Pedido implements Serializable {
 	@Id
 	@Column(name="ID_PEDIDO")
 	private Long idPedido;
-	
+
 	@Column(name="DETALLE_PEDIDO")
 	private String detallePedido;
 
@@ -36,16 +31,13 @@ public class Pedido implements Serializable {
 	@Column(name="FECHA_PEDIDO")
 	private Date fechaPedido;
 
-//	@JsonIgnore
 //	@OneToMany(mappedBy="pedido")
 //	private List<CabeceraVenta> cabeceraVentas;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ID_ESTADO_PEDIDO")
 	private EstadoPedido estadoPedido;
 
-//	@JsonIgnore
 //	@OneToMany(mappedBy="pedido")
 //	private List<Subasta> subastas;
 
@@ -53,7 +45,7 @@ public class Pedido implements Serializable {
 	}
 
 	public Long getIdPedido() {
-		return idPedido;
+		return this.idPedido;
 	}
 
 	public void setIdPedido(Long idPedido) {
@@ -99,5 +91,4 @@ public class Pedido implements Serializable {
 //	public void setSubastas(List<Subasta> subastas) {
 //		this.subastas = subastas;
 //	}
-
 }

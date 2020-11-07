@@ -1,68 +1,51 @@
 package br.com.solucionweb.feriavirtual2.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "CABECERA_VENTA")
-@NamedQuery(name = "CabeceraVenta.findAll", query = "SELECT c FROM CabeceraVenta c")
+@Table(name="CABECERA_VENTA")
+@NamedQuery(name="CabeceraVenta.findAll", query="SELECT c FROM CabeceraVenta c")
 public class CabeceraVenta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "ID_CABECERA_VENTA")
-	private Long idCabeceraVenta;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CV_SEQ")
+	@SequenceGenerator(sequenceName = "cabecera_venta_seq", allocationSize = 1, name = "CV_SEQ")
+	@Column(name="ID_CABECERA_VENTA")
+	private long idCabeceraVenta;
 
-	@Column(name = "DESCRIPCION_CABECERA_VENTA")
+	@Column(name="DESCRIPCION_CABECERA_VENTA")
 	private String descripcionCabeceraVenta;
 
 	@Temporal(TemporalType.DATE)
-	@Column(name = "FECHA_VENTA")
+	@Column(name="FECHA_VENTA")
 	private Date fechaVenta;
-	
-	@JsonIgnore
+
 	@ManyToOne
-	@JoinColumns({ @JoinColumn(name = "ID_ESTADO_PEDIDO", referencedColumnName = "ID_ESTADO_PEDIDO"),
-			@JoinColumn(name = "ID_PEDIDO", referencedColumnName = "ID_PEDIDO") })
+	@JoinColumn(name="ID_PEDIDO")
 	private Pedido pedido;
 
-	@JsonIgnore
 	@ManyToOne
-//	@JoinColumns({ @JoinColumn(name = "ID_TIPO_MONEDA", referencedColumnName = "ID_TIPO_MONEDA"),
-//			@JoinColumn(name = "ID_TIPO_VENTA", referencedColumnName = "ID_TIPO_VENTA") })
-	@JoinColumn(name = "ID_TIPO_VENTA", referencedColumnName = "ID_TIPO_VENTA")
+	@JoinColumn(name="ID_TIPO_VENTA")
 	private TipoVenta tipoVenta;
-	
-	@JsonIgnore
-	@Column(name="ID_TIPO_MONEDA")
-	private TipoMoneda tipoMoneda;
 
-	@JsonIgnore
 	@ManyToOne
-	@JoinColumn(name = "ID_USUARIO")
+	@JoinColumn(name="ID_USUARIO")
 	private Usuario usuario;
+
 
 	public CabeceraVenta() {
 	}
 
-	public Long getIdCabeceraVenta() {
-		return idCabeceraVenta;
+	public long getIdCabeceraVenta() {
+		return this.idCabeceraVenta;
 	}
 
-	public void setIdCabeceraVenta(Long idCabeceraVenta) {
+	public void setIdCabeceraVenta(long idCabeceraVenta) {
 		this.idCabeceraVenta = idCabeceraVenta;
 	}
 
@@ -105,4 +88,5 @@ public class CabeceraVenta implements Serializable {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
 }

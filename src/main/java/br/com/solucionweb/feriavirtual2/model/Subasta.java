@@ -1,31 +1,21 @@
 package br.com.solucionweb.feriavirtual2.model;
 
 import java.io.Serializable;
+import javax.persistence.*;
+import java.math.BigDecimal;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQuery;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "SUBASTA")
+@Table(name="SUBASTA")
 @NamedQuery(name="Subasta.findAll", query="SELECT s FROM Subasta s")
 public class Subasta implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sub_SEQ")
-    @SequenceGenerator(sequenceName = "subasta_seq", allocationSize = 1, name = "sub_SEQ")
-	private Long idSubasta;
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
+	@SequenceGenerator(sequenceName = "subasta_seq", allocationSize = 1, name = "USER_SEQ")
+	@Column(name="ID_SUBASTA")
+	private long idSubasta;
 
 	@Column(name="NOM_PUJADOR_SUBASTA")
 	private String nomPujadorSubasta;
@@ -33,41 +23,28 @@ public class Subasta implements Serializable {
 	@Column(name="VALOR_SUBASTA")
 	private Long valorSubasta;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="ID_ESTADO_SUBASTA")
 	private EstadoSubasta estadoSubasta;
 
-	@JsonIgnore
 	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="ID_ESTADO_PEDIDO", referencedColumnName="ID_ESTADO_PEDIDO"),
-		@JoinColumn(name="ID_PEDIDO", referencedColumnName="ID_PEDIDO")
-		})
+	@JoinColumn(name="ID_PEDIDO")
 	private Pedido pedido;
 
-	@JsonIgnore
 	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="ID_ESTADO_TRANSPORTE", referencedColumnName="ID_ESTADO_TRANSPORTE"),
-		@JoinColumn(name="ID_TIPO_TRANSPORTE", referencedColumnName="ID_TIPO_TRANSPORTE"),
-		@JoinColumn(name="ID_TRANSPORTE", referencedColumnName="ID_TRANSPORTE")
-		})
+	@JoinColumn(name="ID_TRANSPORTE")
 	private Transporte transporte;
 
 	public Subasta() {
 	}
-	
-	
-	public Long getIdSubasta() {
-		return idSubasta;
+
+	public long getIdSubasta() {
+		return this.idSubasta;
 	}
 
-
-	public void setIdSubasta(Long idSubasta) {
+	public void setIdSubasta(long idSubasta) {
 		this.idSubasta = idSubasta;
 	}
-
 
 	public String getNomPujadorSubasta() {
 		return this.nomPujadorSubasta;

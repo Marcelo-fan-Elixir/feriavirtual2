@@ -22,7 +22,7 @@ public class CabeceraVentaDto {
 		fechaVenta = cabeceraVenta.getFechaVenta();
 		pedido = cabeceraVenta.getPedido();
 		usuario = cabeceraVenta.getUsuario();
-		
+		tipoVenta = cabeceraVenta.getTipoVenta();
 	}
 
 	public CabeceraVentaDto() {

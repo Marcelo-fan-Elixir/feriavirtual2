@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.solucionweb.feriavirtual2.model.Comuna;
-import br.com.solucionweb.feriavirtual2.model.Contrato;
 import br.com.solucionweb.feriavirtual2.model.TipoUsuario;
 import br.com.solucionweb.feriavirtual2.model.Usuario;
 
@@ -15,8 +14,8 @@ public class UsuarioDto {
 	private String nombreUsuario;
 	private String direccionUsuario;
 	private String telefonoUsuario;
-	private String emailUsuario;	
-	private List<Contrato> contratos;
+	private String emailUsuario;
+	private String passwordUsuario;
 	private Comuna comuna;
 	private TipoUsuario tipoUsuario;
 	
@@ -27,8 +26,8 @@ public class UsuarioDto {
 		direccionUsuario = usuario.getDireccionUsuario();
 		telefonoUsuario = usuario.getTelefonoUsuario();
 		emailUsuario = usuario.getEmailUsuario();
+		passwordUsuario = usuario.getPasswordUsuario();
 		tipoUsuario = usuario.getTipoUsuario();
-		contratos = usuario.getContratos();
 		comuna = usuario.getComuna();
 	}
 
@@ -76,14 +75,6 @@ public class UsuarioDto {
 	public List<UsuarioDto> convertToList(List<Usuario> listUsuario) {
 		return listUsuario.stream().map(UsuarioDto::new).collect(Collectors.toList());
 	}
-	
-	public List<Contrato> getContratos() {
-		return contratos;
-	}
-
-	public void setContratos(List<Contrato> contratos) {
-		this.contratos = contratos;
-	}
 
 	public Comuna getComuna() {
 		return comuna;
@@ -101,6 +92,12 @@ public class UsuarioDto {
 		this.tipoUsuario = tipoUsuario;
 	}
 
-	
-	
+	public String getPasswordUsuario() {
+		return passwordUsuario;
+	}
+
+	public void setPasswordUsuario(String passwordUsuario) {
+		this.passwordUsuario = passwordUsuario;
+	}
+
 }

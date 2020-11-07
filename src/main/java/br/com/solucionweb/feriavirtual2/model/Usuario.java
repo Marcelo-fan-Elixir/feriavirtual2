@@ -1,7 +1,6 @@
 package br.com.solucionweb.feriavirtual2.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,62 +10,60 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "USUARIO")
-@NamedQuery(name = "Usuario.findAll", query = "SELECT u FROM Usuario u")
+@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "USER_SEQ")
 	@SequenceGenerator(sequenceName = "usuario_seq", allocationSize = 1, name = "USER_SEQ")
-	@Column(name = "ID_USUARIO")
-	private Long idUsuario;
+	@Column(name="ID_USUARIO")
+	private long idUsuario;
 
-	@Column(name = "DIRECCION_USUARIO")
+	@Column(name="DIRECCION_USUARIO")
 	private String direccionUsuario;
 
-	@Column(name = "DV_USUARIO")
+	@Column(name="DV_USUARIO")
 	private String dvUsuario;
 
-	@Column(name = "EMAIL_USUARIO")
+	@Column(name="EMAIL_USUARIO")
 	private String emailUsuario;
 
-	@Column(name = "NOMBRE_USUARIO")
+	@Column(name="NOMBRE_USUARIO")
 	private String nombreUsuario;
 
-	@Column(name = "RUT_USUARIO")
+	@Column(name="PASSWORD_USUARIO")
+	private String passwordUsuario;
+
+	@Column(name="RUT_USUARIO")
 	private String rutUsuario;
 
-	@Column(name = "TELEFONO_USUARIO")
+	@Column(name="TELEFONO_USUARIO")
 	private String telefonoUsuario;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "usuario")
-	private List<Contrato> contratos;
-
 	@ManyToOne
-	@JoinColumn(name = "ID_COMUNA")
+	@JoinColumn(name="ID_COMUNA")
 	private Comuna comuna;
 
 	@ManyToOne
-	@JoinColumn(name = "ID_TIPOUSUARIO")
+	@JoinColumn(name="ID_TIPO_USUARIO")
 	private TipoUsuario tipoUsuario;
 
 	public Usuario() {
 	}
 
-	public Long getIdUsuario() {
+	public long getIdUsuario() {
 		return this.idUsuario;
 	}
 
-	public void setIdUsuario(Long idUsuario) {
+	public void setIdUsuario(long idUsuario) {
 		this.idUsuario = idUsuario;
 	}
 
@@ -102,6 +99,14 @@ public class Usuario implements Serializable {
 		this.nombreUsuario = nombreUsuario;
 	}
 
+	public String getPasswordUsuario() {
+		return this.passwordUsuario;
+	}
+
+	public void setPasswordUsuario(String passwordUsuario) {
+		this.passwordUsuario = passwordUsuario;
+	}
+
 	public String getRutUsuario() {
 		return this.rutUsuario;
 	}
@@ -118,16 +123,8 @@ public class Usuario implements Serializable {
 		this.telefonoUsuario = telefonoUsuario;
 	}
 
-	public List<Contrato> getContratos() {
-		return this.contratos;
-	}
-
-	public void setContratos(List<Contrato> contratos) {
-		this.contratos = contratos;
-	}
-
 	public Comuna getComuna() {
-		return comuna;
+		return this.comuna;
 	}
 
 	public void setComuna(Comuna comuna) {
@@ -135,7 +132,7 @@ public class Usuario implements Serializable {
 	}
 
 	public TipoUsuario getTipoUsuario() {
-		return tipoUsuario;
+		return this.tipoUsuario;
 	}
 
 	public void setTipoUsuario(TipoUsuario tipoUsuario) {
