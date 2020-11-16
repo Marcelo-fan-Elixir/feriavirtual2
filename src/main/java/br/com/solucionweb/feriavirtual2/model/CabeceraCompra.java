@@ -30,10 +30,10 @@ public class CabeceraCompra implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "CC_SEQ")
-	@SequenceGenerator(sequenceName = "cc_seq", allocationSize = 1, name = "CC_SEQ")
+	@SequenceGenerator(sequenceName = "cabecera_compra_seq", allocationSize = 1, name = "CC_SEQ")
 	@Column(name = "ID_CABECERA_COMPRA")
 	private long idCabeceraCompra;
-
+	
 	@Column(name = "DESCRIPCION_CABECERA_COMPRA")
 	private String descripcionCabeceraCompra;
 

@@ -26,7 +26,7 @@ public class Pedido implements Serializable {
 
 	@Column(name="DETALLE_PEDIDO")
 	private String detallePedido;
-
+	
 	@Temporal(TemporalType.DATE)
 	@Column(name="FECHA_PEDIDO")
 	private Date fechaPedido;
