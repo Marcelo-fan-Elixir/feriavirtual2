@@ -2,7 +2,6 @@ package br.com.solucionweb.feriavirtual2.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -18,19 +17,19 @@ public class VentaDetalle implements Serializable {
 	private long idVentaDetalle;
 
 	@Column(name="CABECERA_VENTA_DETALLE")
-	private BigDecimal cabeceraVentaDetalle;
-
+	private Long cabeceraVentaDetalle;
+		
 	@Column(name="DESCRIPCION_VENTA_DETALLE")
 	private String descripcionVentaDetalle;
 
 	@Column(name="IVA_VENTA_DETALLE")
-	private BigDecimal ivaVentaDetalle;
+	private Long ivaVentaDetalle;
 
 	@Column(name="TOTAL_VENTA_DETALLE")
-	private BigDecimal totalVentaDetalle;
+	private Long totalVentaDetalle;
 
 	@Column(name="VALOR_BRUTO_VENTA_DETALLE")
-	private BigDecimal valorBrutoVentaDetalle;
+	private Long valorBrutoVentaDetalle;
 
 	@ManyToOne
 	@JoinColumn(name="ID_CABECERA_VENTA")
@@ -59,11 +58,11 @@ public class VentaDetalle implements Serializable {
 		this.idVentaDetalle = idVentaDetalle;
 	}
 
-	public BigDecimal getCabeceraVentaDetalle() {
+	public Long getCabeceraVentaDetalle() {
 		return this.cabeceraVentaDetalle;
 	}
 
-	public void setCabeceraVentaDetalle(BigDecimal cabeceraVentaDetalle) {
+	public void setCabeceraVentaDetalle(Long cabeceraVentaDetalle) {
 		this.cabeceraVentaDetalle = cabeceraVentaDetalle;
 	}
 
@@ -75,27 +74,27 @@ public class VentaDetalle implements Serializable {
 		this.descripcionVentaDetalle = descripcionVentaDetalle;
 	}
 
-	public BigDecimal getIvaVentaDetalle() {
+	public Long getIvaVentaDetalle() {
 		return this.ivaVentaDetalle;
 	}
 
-	public void setIvaVentaDetalle(BigDecimal ivaVentaDetalle) {
+	public void setIvaVentaDetalle(Long ivaVentaDetalle) {
 		this.ivaVentaDetalle = ivaVentaDetalle;
 	}
 
-	public BigDecimal getTotalVentaDetalle() {
+	public Long getTotalVentaDetalle() {
 		return this.totalVentaDetalle;
 	}
 
-	public void setTotalVentaDetalle(BigDecimal totalVentaDetalle) {
+	public void setTotalVentaDetalle(Long totalVentaDetalle) {
 		this.totalVentaDetalle = totalVentaDetalle;
 	}
 
-	public BigDecimal getValorBrutoVentaDetalle() {
+	public Long getValorBrutoVentaDetalle() {
 		return this.valorBrutoVentaDetalle;
 	}
 
-	public void setValorBrutoVentaDetalle(BigDecimal valorBrutoVentaDetalle) {
+	public void setValorBrutoVentaDetalle(Long valorBrutoVentaDetalle) {
 		this.valorBrutoVentaDetalle = valorBrutoVentaDetalle;
 	}
 

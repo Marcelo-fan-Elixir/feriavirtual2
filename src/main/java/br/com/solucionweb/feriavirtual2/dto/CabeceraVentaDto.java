@@ -4,11 +4,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.com.solucionweb.feriavirtual2.model.Pedido;
 import br.com.solucionweb.feriavirtual2.model.CabeceraVenta;
+import br.com.solucionweb.feriavirtual2.model.Pedido;
 import br.com.solucionweb.feriavirtual2.model.TipoVenta;
 import br.com.solucionweb.feriavirtual2.model.Usuario;
-import br.com.solucionweb.feriavirtual2.model.VentaDetalle;
 
 public class CabeceraVentaDto {
 
@@ -17,7 +16,6 @@ public class CabeceraVentaDto {
 	private Pedido pedido;
 	private TipoVenta tipoVenta;
 	private Usuario usuario;
-	private List<VentaDetalle> ventaDetalles;
 
 	public CabeceraVentaDto(CabeceraVenta cabeceraVenta) {
 		descripcionCabeceraVenta = cabeceraVenta.getDescripcionCabeceraVenta();
@@ -25,7 +23,6 @@ public class CabeceraVentaDto {
 		pedido = cabeceraVenta.getPedido();
 		usuario = cabeceraVenta.getUsuario();
 		tipoVenta = cabeceraVenta.getTipoVenta();
-		ventaDetalles = cabeceraVenta.getVentaDetalles();
 	}
 
 	public CabeceraVentaDto() {
@@ -70,14 +67,6 @@ public class CabeceraVentaDto {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public List<VentaDetalle> getVentaDetalles() {
-		return ventaDetalles;
-	}
-
-	public void setVentaDetalles(List<VentaDetalle> ventaDetalles) {
-		this.ventaDetalles = ventaDetalles;
 	}
 
 	public List<CabeceraVentaDto> convertToList(List<CabeceraVenta> listCabeceraVenta) {
