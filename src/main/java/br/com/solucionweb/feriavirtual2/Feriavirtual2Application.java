@@ -3,6 +3,8 @@ package br.com.solucionweb.feriavirtual2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import br.com.solucionweb.feriavirtual2.util.PdfGenerate;
+
 @SpringBootApplication
 public class Feriavirtual2Application {
 

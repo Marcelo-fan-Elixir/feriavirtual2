@@ -12,6 +12,7 @@ import br.com.solucionweb.feriavirtual2.form.ContratoForm;
 import br.com.solucionweb.feriavirtual2.model.Contrato;
 import br.com.solucionweb.feriavirtual2.repository.ContratoRepository;
 import br.com.solucionweb.feriavirtual2.service.ContratoService;
+import br.com.solucionweb.feriavirtual2.util.PdfGenerate;
 
 @Service
 public class ContratoServiceImpl implements ContratoService{
@@ -82,6 +83,14 @@ public class ContratoServiceImpl implements ContratoService{
 	@Override
 	public List<Contrato> listContrato() {
 		return contratoRepository.findAll();
+	}
+
+	@Override
+	public Optional<Contrato> getContratoPdf(Long id) {
+		Contrato contrato = contratoRepository.getOne(id);
+		PdfGenerate pdf = new PdfGenerate();
+		pdf.test(contrato);
+		return null;
 	}
 	
 }

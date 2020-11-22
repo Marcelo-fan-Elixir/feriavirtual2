@@ -19,7 +19,9 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.solucionweb.feriavirtual2.dto.ContratoDto;
 import br.com.solucionweb.feriavirtual2.form.ContratoForm;
 import br.com.solucionweb.feriavirtual2.model.Contrato;
+import br.com.solucionweb.feriavirtual2.repository.ContratoRepository;
 import br.com.solucionweb.feriavirtual2.service.ContratoService;
+import br.com.solucionweb.feriavirtual2.util.PdfGenerate;
 
 @RestController
 @RequestMapping("/v1/contrato")
@@ -67,6 +69,15 @@ public class ContratoController {
 			return ResponseEntity.ok().body(new ContratoDto(contrato.get()));	
 		}
 		return ResponseEntity.notFound().build();
+	}
+	
+	@Autowired
+	private ContratoRepository contratoR;
+	
+	@GetMapping("/pdf/{id}")
+	public ResponseEntity<ContratoDto> getContratoPdf(@PathVariable Long id){
+		contratoService.getContratoPdf(id);
+		return ResponseEntity.ok().build();
 	}
 	
 }

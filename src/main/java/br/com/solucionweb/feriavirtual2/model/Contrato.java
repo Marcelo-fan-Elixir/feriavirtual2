@@ -63,12 +63,10 @@ public class Contrato implements Serializable {
 	@Column(name="PDF_CONTRATO")
 	private byte[] pdfContrato;
 
-	//bi-directional many-to-one association to TipoContrato
 	@ManyToOne
 	@JoinColumn(name="ID_TIPO_CONTRATO")
 	private TipoContrato tipoContrato;
 
-	//bi-directional many-to-one association to Usuario
 	@ManyToOne
 	@JoinColumn(name="ID_USUARIO")
 	private Usuario usuario;

@@ -11,6 +11,8 @@ public interface ContratoService {
 	public Contrato saveContrato(ContratoForm contratoForm);
 
 	public Optional<Contrato> getContrato(Long id);
+	
+	public Optional<Contrato> getContratoPdf(Long id);
 
 	public Optional<Contrato> deleteContrato(Long id);
 	
