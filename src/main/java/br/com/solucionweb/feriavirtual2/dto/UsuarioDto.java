@@ -9,6 +9,7 @@ import br.com.solucionweb.feriavirtual2.model.Usuario;
 
 public class UsuarioDto {
 
+	private Long idUsuario;
 	private String rutUsuario;
 	private String dvUsuario;
 	private String nombreUsuario;
@@ -20,6 +21,7 @@ public class UsuarioDto {
 	private TipoUsuario tipoUsuario;
 	
 	public UsuarioDto(Usuario usuario) {
+		idUsuario = usuario.getIdUsuario();
 		rutUsuario = usuario.getRutUsuario();
 		dvUsuario = usuario.getDvUsuario();
 		nombreUsuario = usuario.getNombreUsuario();
@@ -35,6 +37,14 @@ public class UsuarioDto {
 		
 	}
 	
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 	public String getRutUsuario() {
 		return rutUsuario;
 	}

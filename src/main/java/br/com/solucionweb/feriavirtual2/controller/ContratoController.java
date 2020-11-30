@@ -71,9 +71,6 @@ public class ContratoController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@Autowired
-	private ContratoRepository contratoR;
-	
 	@GetMapping("/pdf/{id}")
 	public ResponseEntity<ContratoDto> getContratoPdf(@PathVariable Long id){
 		contratoService.getContratoPdf(id);
