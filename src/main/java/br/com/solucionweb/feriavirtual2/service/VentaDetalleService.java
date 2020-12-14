@@ -18,4 +18,6 @@ public interface VentaDetalleService {
 	
 	public List<VentaDetalle> listVentaDetalle();
 	
+	public Optional<VentaDetalle> getNotaVentaDetalle(Long id);
+	
 }

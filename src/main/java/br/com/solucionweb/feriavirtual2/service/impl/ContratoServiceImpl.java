@@ -89,7 +89,7 @@ public class ContratoServiceImpl implements ContratoService{
 	public Optional<Contrato> getContratoPdf(Long id) {
 		Contrato contrato = contratoRepository.getOne(id);
 		PdfGenerate pdf = new PdfGenerate();
-		pdf.test(contrato);
+		pdf.generarContrato(contrato);
 		return null;
 	}
 	

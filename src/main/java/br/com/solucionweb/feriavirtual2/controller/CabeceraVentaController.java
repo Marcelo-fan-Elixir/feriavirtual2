@@ -17,9 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import br.com.solucionweb.feriavirtual2.dto.CabeceraVentaDto;
+import br.com.solucionweb.feriavirtual2.dto.VentaDetalleDto;
 import br.com.solucionweb.feriavirtual2.form.CabeceraVentaForm;
 import br.com.solucionweb.feriavirtual2.model.CabeceraVenta;
+import br.com.solucionweb.feriavirtual2.model.VentaDetalle;
 import br.com.solucionweb.feriavirtual2.service.CabeceraVentaService;
+import br.com.solucionweb.feriavirtual2.service.VentaDetalleService;
 
 @RestController
 @RequestMapping("/v1/cabeceraVenta")
@@ -27,6 +30,9 @@ public class CabeceraVentaController {
 
 	@Autowired
 	private CabeceraVentaService cabeceraVentaService;
+	
+	@Autowired
+	private VentaDetalleService ventaDetalleService;
 	
 	@PostMapping()
 	public ResponseEntity<CabeceraVentaDto> saveCabeceraVenta(@RequestBody CabeceraVentaForm cabeceraVentaForm, UriComponentsBuilder uriBuilder) {
@@ -67,6 +73,17 @@ public class CabeceraVentaController {
 			return ResponseEntity.ok().body(new CabeceraVentaDto(cabeceraVenta.get()));	
 		}
 		return ResponseEntity.notFound().build();
+	}
+	
+	@GetMapping("/notaVenta/{id}")
+	public ResponseEntity<VentaDetalleDto> getNotaVenta(@PathVariable Long id){
+		Optional<VentaDetalle> ventaDetalle = ventaDetalleService.getVentaDetalle(id);
+		if (ventaDetalle.isPresent()) {
+			ventaDetalleService.getNotaVentaDetalle(id);
+			return ResponseEntity.ok().build();
+		}else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 }

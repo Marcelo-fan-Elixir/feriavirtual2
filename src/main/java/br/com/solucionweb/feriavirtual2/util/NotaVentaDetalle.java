@@ -12,10 +12,10 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import br.com.solucionweb.feriavirtual2.model.Contrato;
+import br.com.solucionweb.feriavirtual2.model.VentaDetalle;
 
 @Component
-public class PdfGenerate {
+public class NotaVentaDetalle {
 
 	private static Font fonteVermelha = new Font(Font.FontFamily.TIMES_ROMAN,
 			12, Font.NORMAL, BaseColor.RED);
@@ -24,13 +24,14 @@ public class PdfGenerate {
 	private static Font fonteCabecalho = new Font(Font.FontFamily.COURIER, 18,
 			Font.BOLD);
 	
-	public void generarContrato(Contrato contrato) {
+	public void generaNotaVenta(VentaDetalle ventaDetalle) {
 		try {
 	        Document document = new Document();
-	        PdfWriter.getInstance(document, new FileOutputStream("D:\\pdfTest\\CONTRATO_" + contrato.getTipoContrato().getNombreTipoContrato() + "_" + contrato.getUsuario().getRutUsuario() + ".pdf"));
+	        PdfWriter.getInstance(document, new FileOutputStream("C:\\pdfTest\\NOTA_VENTA_" + ventaDetalle.getIdVentaDetalle()+ "_" + 
+	        					  ventaDetalle.getCabeceraVenta().getFechaVenta() + "_" + ventaDetalle.getCabeceraVenta().getTipoVenta().getNombreTipoVenta() + ".pdf"));
 	        document.open();
 	        // Left
-	        Paragraph paragraph = new Paragraph(contrato.getTipoContrato().getDescripcionTipoContrato(), fonteCabecalho);
+	        Paragraph paragraph = new Paragraph(ventaDetalle.getDescripcionVentaDetalle(), fonteCabecalho);
 	        paragraph.setAlignment(Element.ALIGN_CENTER);
 	        document.add(paragraph);
 	        
@@ -48,34 +49,13 @@ public class PdfGenerate {
 	        document.add(paragraph);
 	      //-----------------------------------------------------------------------
 	        
-	        if (contrato.getIdTipoContrato() == 1) {
-	        	paragraph = new Paragraph("Este contrato internacional se refiere a un pacto entre personas jurídicas, que adquieren unas oblicaciones,"
-	        			+ "				   donde se ligan como ´´COMPRADOR´´ y ´´VENDEDO´´, las cuales están establecidas en diferentes países, el país"
-	        			+ "				   importador ESTADOS UNIDOS y el exportador CHILE, donde se pacta una serie se sucesos como precio, donde se"
-	        			+ " 			   paga la mercancía, donde se deja la mercancían segun cantidad, y donde se puede encontrar un equilibrio entre"
-	        			+ "				   escasez y exceso.");
+
+	        	paragraph = new Paragraph("Nota de venta realizada por FERIA VIRTUAL");
 		        paragraph.setAlignment(Element.ALIGN_CENTER);
 		        document.add(paragraph);
-			}
+			
 	        
-	        if (contrato.getIdTipoContrato() == 2) {
-	        	paragraph = new Paragraph("Este contrato nacional se refiere a un pacto entre personas jurídicas, que adquieren unas oblicaciones,"
-	        			+ "				   donde se ligan como ´´COMPRADOR´´ y ´´VENDEDO´´, las cuales están establecidas en CHILE, donde se pacta una serie se sucesos como precio, donde se"
-	        			+ " 			   paga la mercancía, donde se deja la mercancían segun cantidad, y donde se puede encontrar un equilibrio entre"
-	        			+ "				   escasez y exceso.");
-		        paragraph.setAlignment(Element.ALIGN_CENTER);
-		        document.add(paragraph);
-			}
 	        
-	        if (contrato.getIdTipoContrato() == 3) {
-	        	paragraph = new Paragraph("Este contrato internacional se refiere a un pacto entre personas jurídicas, que adquieren unas oblicaciones,"
-	        			+ "				   donde se ligan como ´´COMPRADOR´´ y ´´VENDEDO´´, las cuales están establecidas en diferentes países, el país"
-	        			+ "				   importador ESTADOS UNIDOS y el exportador CHILE, donde se pacta una serie se sucesos como precio, donde se"
-	        			+ " 			   paga la mercancpia, donde se deja la mercancían segun cantidad, y donde se puede encontrar un equilibrio entre"
-	        			+ "				   escasez y exceso.");
-		        paragraph.setAlignment(Element.ALIGN_CENTER);
-		        document.add(paragraph);
-			}
 	        
 	      //--------------------------------------------------------------------
 			paragraph = new Paragraph(" ");
@@ -91,13 +71,13 @@ public class PdfGenerate {
 	        document.add(paragraph);
 	      //-----------------------------------------------------------------------
 	        
-	        paragraph = new Paragraph("FECHA INICIO CONTRATO: " + contrato.getFechaInicio(),  negritoPequena);
+	        paragraph = new Paragraph("FECHA:     " + ventaDetalle.getCabeceraVenta().getFechaVenta(),  negritoPequena);
 	        document.add(paragraph);
-	        paragraph = new Paragraph("FECHA TERMINO CONTRATO: " + contrato.getFechaTermino(),  negritoPequena);
+	        paragraph = new Paragraph("RUT USUARIO:     " + ventaDetalle.getCabeceraVenta().getUsuario().getRutUsuario(),  negritoPequena);
 	        document.add(paragraph);
-	        paragraph = new Paragraph("PERSONA A CONTRATAR :" + contrato.getUsuario().getNombreUsuario(),  negritoPequena);
+	        paragraph = new Paragraph("VENTA REALIZADA EN:     " + ventaDetalle.getCabeceraVenta().getUsuario().getComuna().getNombreComuna(),  negritoPequena);
 	        document.add(paragraph);
-	        paragraph = new Paragraph("RUT :" + contrato.getUsuario().getRutUsuario(), negritoPequena);
+	        paragraph = new Paragraph("TIPO DE VENTA:     " + ventaDetalle.getCabeceraVenta().getTipoVenta().getNombreTipoVenta(), negritoPequena);
 	        document.add(paragraph);
 	        paragraph = new Paragraph(" ");
 	        paragraph.setAlignment(Element.ALIGN_CENTER);
@@ -117,9 +97,12 @@ public class PdfGenerate {
 	        document.add(paragraph);
 	      //-----------------------------------------------------------------------
 	        
-			paragraph.add(new Paragraph("__________________________                                              __________________________",negritoPequena));
-			paragraph.add(new Paragraph("     FIRMA CONTRATANTE                                                          FIRMA CONTRATADO",negritoPequena));
-			document.add(paragraph);
+	        paragraph = new Paragraph("VALOR VENTA:     " + ventaDetalle.getTotalVentaDetalle(), negritoPequena);
+	        document.add(paragraph);
+	        paragraph = new Paragraph("IVA:     " + ventaDetalle.getIvaVentaDetalle(), negritoPequena);
+	        document.add(paragraph);
+	        paragraph = new Paragraph("VALOR BRUTO:     " + ventaDetalle.getValorBrutoVentaDetalle(), negritoPequena);
+	        document.add(paragraph);
 			
 			//--------------------------------------------------------------------
 			paragraph = new Paragraph(" ");
@@ -134,7 +117,7 @@ public class PdfGenerate {
 	        paragraph.setAlignment(Element.ALIGN_CENTER);
 	        document.add(paragraph);
 	      //-----------------------------------------------------------------------
-			paragraph = new Paragraph("Archivo generado el dia: : "
+			paragraph = new Paragraph("Archivo generado el dia: "
 					+ new Date(), negritoPequena);
 	        document.add(paragraph);
 			

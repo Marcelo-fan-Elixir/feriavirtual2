@@ -12,6 +12,7 @@ import br.com.solucionweb.feriavirtual2.form.VentaDetalleForm;
 import br.com.solucionweb.feriavirtual2.model.VentaDetalle;
 import br.com.solucionweb.feriavirtual2.repository.VentaDetalleRepository;
 import br.com.solucionweb.feriavirtual2.service.VentaDetalleService;
+import br.com.solucionweb.feriavirtual2.util.NotaVentaDetalle;
 
 @Service
 public class VentaDetalleServiceImpl implements VentaDetalleService{
@@ -75,6 +76,14 @@ public class VentaDetalleServiceImpl implements VentaDetalleService{
 	@Override
 	public List<VentaDetalle> listVentaDetalle() {
 		return ventaDetalleRepository.findAll();
+	}
+	
+	@Override
+	public Optional<VentaDetalle> getNotaVentaDetalle(Long id) {
+		VentaDetalle ventaDetalle = ventaDetalleRepository.getOne(id);
+		NotaVentaDetalle nvd = new NotaVentaDetalle();
+		nvd.generaNotaVenta(ventaDetalle);
+		return null;
 	}
 	
 }
