@@ -56,6 +56,8 @@ public class CabeceraVenta implements Serializable {
 	@JsonIgnore
 	@OneToMany(mappedBy="cabeceraVenta")
 	private List<VentaDetalle> ventaDetalles;
+	
+	
 
 
 	public CabeceraVenta() {

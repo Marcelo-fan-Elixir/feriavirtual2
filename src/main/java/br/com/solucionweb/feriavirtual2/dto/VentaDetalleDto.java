@@ -1,6 +1,10 @@
 package br.com.solucionweb.feriavirtual2.dto;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import br.com.solucionweb.feriavirtual2.model.CabeceraVenta;
+import br.com.solucionweb.feriavirtual2.model.VentaDetalle;
 import br.com.solucionweb.feriavirtual2.model.VentaDetalle;
 
 public class VentaDetalleDto {
@@ -19,6 +23,10 @@ public class VentaDetalleDto {
 		totalVentaDetalle = ventaDetalle.getTotalVentaDetalle();
 		valorBrutoVentaDetalle = ventaDetalle.getValorBrutoVentaDetalle();
 		cabeceraVenta = ventaDetalle.getCabeceraVenta();
+	}
+	
+	public VentaDetalleDto() {
+		
 	}
 
 	public Long getCabeceraVentaDetalle() {
@@ -69,4 +77,8 @@ public class VentaDetalleDto {
 		this.cabeceraVenta = cabeceraVenta;
 	}
 
+	public List<VentaDetalleDto> convertToList(List<VentaDetalle> listVentaDetalle) {
+		return listVentaDetalle.stream().map(VentaDetalleDto::new).collect(Collectors.toList());
+	}
+	
 }

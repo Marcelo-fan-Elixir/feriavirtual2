@@ -75,7 +75,9 @@ public class CabeceraVentaController {
 		return ResponseEntity.notFound().build();
 	}
 	
-	@GetMapping("/notaVenta/{id}")
+	///DETALLE VENTA
+	
+	@GetMapping("/detalle/notaVenta/{id}")
 	public ResponseEntity<VentaDetalleDto> getNotaVenta(@PathVariable Long id){
 		Optional<VentaDetalle> ventaDetalle = ventaDetalleService.getVentaDetalle(id);
 		if (ventaDetalle.isPresent()) {
@@ -84,6 +86,11 @@ public class CabeceraVentaController {
 		}else {
 			return ResponseEntity.notFound().build();
 		}
+	}
+	
+	@GetMapping("/detalle")
+	public ResponseEntity<List<VentaDetalleDto>> listVentaDetalle(){
+		return ResponseEntity.ok(new VentaDetalleDto().convertToList(ventaDetalleService.listVentaDetalle()));
 	}
 	
 }

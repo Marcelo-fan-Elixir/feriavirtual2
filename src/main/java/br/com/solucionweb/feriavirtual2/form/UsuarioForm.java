@@ -6,7 +6,7 @@ import br.com.solucionweb.feriavirtual2.model.Usuario;
 
 public class UsuarioForm {
 	
-	private Long idUsuario;
+//	private Long idUsuario;
 	private String rutUsuario;
 	private String dvUsuario;
 	private String nombreUsuario;
@@ -18,12 +18,12 @@ public class UsuarioForm {
 	private TipoUsuario tipoUsuario;
 	
 	
-	public Long getIdUsuario() {
-		return idUsuario;
-	}
-	public void setIdUsuario(Long idUsuario) {
-		this.idUsuario = idUsuario;
-	}
+//	public Long getIdUsuario() {
+//		return idUsuario;
+//	}
+//	public void setIdUsuario(Long idUsuario) {
+//		this.idUsuario = idUsuario;
+//	}
 	public String getRutUsuario() {
 		return rutUsuario;
 	}
@@ -84,7 +84,7 @@ public class UsuarioForm {
 	public Usuario convert() {
 		
 		Usuario usuario = new Usuario();
-		usuario.setIdUsuario(this.idUsuario);
+//		usuario.setIdUsuario(this.idUsuario);
 		usuario.setNombreUsuario(this.nombreUsuario);
 		usuario.setRutUsuario(this.rutUsuario);
 		usuario.setDvUsuario(this.dvUsuario);
