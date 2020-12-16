@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.com.solucionweb.feriavirtual2.model.CabeceraVenta;
-import br.com.solucionweb.feriavirtual2.model.VentaDetalle;
+import br.com.solucionweb.feriavirtual2.model.Producto;
 import br.com.solucionweb.feriavirtual2.model.VentaDetalle;
 
 public class VentaDetalleDto {
@@ -15,8 +15,10 @@ public class VentaDetalleDto {
 	private Long totalVentaDetalle;
 	private Long valorBrutoVentaDetalle;
 	private CabeceraVenta cabeceraVenta;
+	private List<Producto> productos;
 
 	public VentaDetalleDto(VentaDetalle ventaDetalle) {
+		productos = ventaDetalle.getProductos();
 		cabeceraVentaDetalle = ventaDetalle.getCabeceraVentaDetalle();
 		descripcionVentaDetalle = ventaDetalle.getDescripcionVentaDetalle();
 		ivaVentaDetalle = ventaDetalle.getIvaVentaDetalle();
@@ -27,6 +29,16 @@ public class VentaDetalleDto {
 	
 	public VentaDetalleDto() {
 		
+	}
+	
+	
+
+	public List<Producto> getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos) {
+		this.productos = productos;
 	}
 
 	public Long getCabeceraVentaDetalle() {

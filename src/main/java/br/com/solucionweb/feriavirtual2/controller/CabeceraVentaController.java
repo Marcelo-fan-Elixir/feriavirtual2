@@ -19,6 +19,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 import br.com.solucionweb.feriavirtual2.dto.CabeceraVentaDto;
 import br.com.solucionweb.feriavirtual2.dto.VentaDetalleDto;
 import br.com.solucionweb.feriavirtual2.form.CabeceraVentaForm;
+import br.com.solucionweb.feriavirtual2.form.VentaDetalleForm;
 import br.com.solucionweb.feriavirtual2.model.CabeceraVenta;
 import br.com.solucionweb.feriavirtual2.model.VentaDetalle;
 import br.com.solucionweb.feriavirtual2.service.CabeceraVentaService;
@@ -91,6 +92,15 @@ public class CabeceraVentaController {
 	@GetMapping("/detalle")
 	public ResponseEntity<List<VentaDetalleDto>> listVentaDetalle(){
 		return ResponseEntity.ok(new VentaDetalleDto().convertToList(ventaDetalleService.listVentaDetalle()));
+	}
+	
+	@PostMapping("/detalle")
+	public ResponseEntity<VentaDetalleDto> saveVentaDetalle(@RequestBody VentaDetalleForm ventaDetalleForm, UriComponentsBuilder uriBuilder) {
+		VentaDetalle ventaDetalle = ventaDetalleService.saveVentaDetalle(ventaDetalleForm);
+		URI uri = uriBuilder.path("/v1/ventaDetalle/{id}")
+				.buildAndExpand(ventaDetalle.getIdVentaDetalle())
+				.toUri();
+		return ResponseEntity.created(uri).body(new VentaDetalleDto(ventaDetalle));//201
 	}
 	
 }

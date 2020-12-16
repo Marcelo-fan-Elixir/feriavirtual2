@@ -1,6 +1,9 @@
 package br.com.solucionweb.feriavirtual2.form;
 
+import java.util.List;
+
 import br.com.solucionweb.feriavirtual2.model.CabeceraVenta;
+import br.com.solucionweb.feriavirtual2.model.Producto;
 import br.com.solucionweb.feriavirtual2.model.VentaDetalle;
 
 public class VentaDetalleForm {
@@ -11,6 +14,7 @@ public class VentaDetalleForm {
 	private Long totalVentaDetalle;
 	private Long valorBrutoVentaDetalle;
 	private CabeceraVenta cabeceraVenta;
+	private List<Producto> productos;
 
 	public Long getCabeceraVentaDetalle() {
 		return cabeceraVentaDetalle;
@@ -60,6 +64,14 @@ public class VentaDetalleForm {
 		this.cabeceraVenta = cabeceraVenta;
 	}
 
+	public List<Producto> getProducto() {
+		return productos;
+	}
+
+	public void setProducto(List<Producto> productos) {
+		this.productos = productos;
+	}
+
 	public VentaDetalle convert() {
 
 		VentaDetalle ventaDetalle = new VentaDetalle();
@@ -69,6 +81,7 @@ public class VentaDetalleForm {
 		ventaDetalle.setTotalVentaDetalle(this.totalVentaDetalle);
 		ventaDetalle.setValorBrutoVentaDetalle(this.valorBrutoVentaDetalle);
 		ventaDetalle.setCabeceraVenta(this.cabeceraVenta);
+		ventaDetalle.setProductos(this.productos);
 		return ventaDetalle;
 	}
 
